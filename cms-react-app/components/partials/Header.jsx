@@ -13,8 +13,22 @@ function Header({
       label: 'Home',
     },
     {
-      href: '/cms-react-cars',
       label: 'Cars!',
+      submenu: [
+        {
+          href: '/cms-react-cars/sedans',
+          label: 'Sedans',
+        },
+        {
+          href: '/cms-react-cars/suvs',
+          label: 'SUVs',
+        },
+        {
+          href: '/cms-react-cars/trucks',
+          label: 'Trucks',
+        },
+        // Add more submenu items as needed
+      ],
     },
   ];
 
