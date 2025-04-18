@@ -66,7 +66,7 @@ function Header({
               >
                 {navLink.label}
               </span>
-              {isCarsSubmenuOpen && Array.isArray(navLink.submenu) && (
+             {/* {isCarsSubmenuOpen && Array.isArray(navLink.submenu) && ( */}
   <ul className={headerStyles.submenu}>
     {navLink.submenu.map((subItem) => (
       <li key={subItem.label}>
@@ -83,7 +83,7 @@ function Header({
       </li>
     ))}
   </ul>
-)}
+{ /*})} */}
 
             </div>
           ) : (
