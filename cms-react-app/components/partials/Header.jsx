@@ -1,18 +1,45 @@
 import headerStyles from '../../styles/header.module.css';
 import { useState } from 'react';
 
-function Header({ /* ... props ... */ }) {
-  // ... your navLinks array ...
+function Header({
+  brandColor = {
+    opacity: 100,
+    color: '#FF7A59',
+  },
+  text = `Hello from HubSpot Academy's React Course!`,
+}) {
+  const navLinks = [
+    {
+      href: '/cms-react-home',
+      label: 'Home',
+    },
+    {
+      label: 'Cars!',
+      submenu: [
+        {
+          href: '/cms-react-cars/sedans',
+          label: 'Sedans',
+        },
+        {
+          href: '/cms-react-cars/suvs',
+          label: 'SUVs',
+        },
+        {
+          href: '/cms-react-cars/trucks',
+          label: 'Trucks',
+        },
+      ],
+    },
+  ];
+
   const [isCarsSubmenuOpen, setIsCarsSubmenuOpen] = useState(false);
 
   const handleCarsMouseEnter = () => {
     setIsCarsSubmenuOpen(true);
-    console.log("Mouse entered Cars!", isCarsSubmenuOpen); // ADD THIS
   };
 
   const handleCarsMouseLeave = () => {
     setIsCarsSubmenuOpen(false);
-    console.log("Mouse left Cars!", isCarsSubmenuOpen);   // ADD THIS
   };
 
   return (
@@ -28,7 +55,12 @@ function Header({ /* ... props ... */ }) {
                 onMouseLeave={handleCarsMouseLeave}
               >
                 <span
-                  style={{ /* ... styles ... */ }}
+                  style={{
+                    color: brandColor.color,
+                    borderColor: brandColor.color,
+                    opacity: brandColor.opacity / 100,
+                    cursor: 'pointer',
+                  }}
                 >
                   {navLink.label}
                 </span>
@@ -38,7 +70,11 @@ function Header({ /* ... props ... */ }) {
                       <li key={subItem.label}>
                         <a
                           href={subItem.href}
-                          style={{ /* ... styles ... */ }}
+                          style={{
+                            color: brandColor.color,
+                            borderColor: brandColor.color,
+                            opacity: brandColor.opacity / 100,
+                          }}
                         >
                           {subItem.label}
                         </a>
@@ -49,7 +85,11 @@ function Header({ /* ... props ... */ }) {
               </div>
             ) : (
               <a
-                style={{ /* ... styles ... */ }}
+                style={{
+                  color: brandColor.color,
+                  borderColor: brandColor.color,
+                  opacity: brandColor.opacity / 100,
+                }}
                 href={navLink.href}
               >
                 {navLink.label}
