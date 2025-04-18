@@ -1,7 +1,13 @@
 import headerStyles from '../../styles/header.module.css';
 import { useState } from 'react';
 
-function Header({ brandColor, text }) { // Keep props, even if not used immediately
+function Header({
+  brandColor = {
+    opacity: 100,
+    color: '#FF7A59',
+  },
+  text = `Hello from HubSpot Academy's React Course!`,
+}) {
   const navLinks = [
     {
       href: '/cms-react-home',
@@ -11,18 +17,32 @@ function Header({ brandColor, text }) { // Keep props, even if not used immediat
       label: 'Cars!',
       submenu: [
         {
-          href: '/cars/sedans',
+          href: '/cms-react-cars/sedans',
           label: 'Sedans',
+        },
+        {
+          href: '/cms-react-cars/suvs',
+          label: 'SUVs',
+        },
+        {
+          href: '/cms-react-cars/trucks',
+          label: 'Trucks',
         },
       ],
     },
   ];
 
+  
+
+  const [isCarsSubmenuOpen, setIsCarsSubmenuOpen] = useState(false);
+
   const handleCarsMouseEnter = () => {
+    setIsCarsSubmenuOpen(true);
     console.log("Mouse entered Cars!");
   };
-
+  
   const handleCarsMouseLeave = () => {
+    setIsCarsSubmenuOpen(false);
     console.log("Mouse left Cars!");
   };
 
@@ -32,20 +52,53 @@ function Header({ brandColor, text }) { // Keep props, even if not used immediat
       <nav className={headerStyles.nav}>
         {navLinks.map((navLink) => (
           <div key={navLink.label} className={headerStyles.navItem}>
-            {navLink.submenu ? (
-              <div className={headerStyles.dropdown}>
-                <span
-                  onMouseEnter={handleCarsMouseEnter}
-                  onMouseLeave={handleCarsMouseLeave}
-                  style={{ cursor: 'pointer' }} // Keep minimal style
-                >
-                  Cars!
-                </span>
-              </div>
-            ) : (
-              <a href={navLink.href}>{navLink.label}</a>
-            )}
-          </div>
+          {navLink.submenu ? (
+            <div className={headerStyles.dropdown}>
+              <span
+                style={{
+                  color: brandColor.color,
+                  borderColor: brandColor.color,
+                  opacity: brandColor.opacity / 100,
+                  cursor: 'pointer',
+                }}
+                onMouseEnter={handleCarsMouseEnter} // Move handler here
+                onMouseLeave={handleCarsMouseLeave}  // Move handler here
+              >
+                {navLink.label}
+              </span>
+              {isCarsSubmenuOpen && Array.isArray(navLink.submenu) && (
+  <ul className={headerStyles.submenu}>
+    {navLink.submenu.map((subItem) => (
+      <li key={subItem.label}>
+        <a
+          href={subItem.href}
+          style={{
+            color: brandColor.color,
+            borderColor: brandColor.color,
+            opacity: brandColor.opacity / 100,
+          }}
+        >
+          {subItem.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+)}
+
+            </div>
+          ) : (
+            <a
+              style={{
+                color: brandColor.color,
+                borderColor: brandColor.color,
+                opacity: brandColor.opacity / 100,
+              }}
+              href={navLink.href}
+            >
+              {navLink.label}
+            </a>
+          )}
+        </div>
         ))}
       </nav>
     </header>
