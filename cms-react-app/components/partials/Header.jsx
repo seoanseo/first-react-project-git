@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
+import headerStyles from '../../styles/header.module.css';
+import { useState } from 'react';
+
 
 const App = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
+    console.log('Mouse entered!');
     setIsHovered(true);
   };
+  
 
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+  
 
   const textColor = isHovered ? 'red' : 'black';
 
   return (
     <h1
-      onMouseEnter={handleMouseEnter}
+    onClick={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{ color: textColor }}
     >
