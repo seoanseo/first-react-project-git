@@ -32,14 +32,18 @@ function Header({
     },
   ];
 
+  
+
   const [isCarsSubmenuOpen, setIsCarsSubmenuOpen] = useState(false);
 
   const handleCarsMouseEnter = () => {
     setIsCarsSubmenuOpen(true);
+    console.log("Mouse entered Cars!");
   };
-
+  
   const handleCarsMouseLeave = () => {
     setIsCarsSubmenuOpen(false);
+    console.log("Mouse left Cars!");
   };
 
   return (
