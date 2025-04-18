@@ -52,54 +52,52 @@ function Header({
       <nav className={headerStyles.nav}>
         {navLinks.map((navLink) => (
           <div key={navLink.label} className={headerStyles.navItem}>
-            {navLink.submenu ? (
-              <div
-                className={headerStyles.dropdown}
-                onMouseEnter={handleCarsMouseEnter}
-                onMouseLeave={handleCarsMouseLeave}
-              >
-                <span
-                  style={{
-                    color: brandColor.color,
-                    borderColor: brandColor.color,
-                    opacity: brandColor.opacity / 100,
-                    cursor: 'pointer',
-                  }}
-                >
-                  {navLink.label}
-                </span>
-                {isCarsSubmenuOpen && (
-                  <ul className={headerStyles.submenu}>
-                    {navLink.submenu.map((subItem) => (
-                      <li key={subItem.label}>
-                        <a
-                          href={subItem.href}
-                          style={{
-                            color: brandColor.color,
-                            borderColor: brandColor.color,
-                            opacity: brandColor.opacity / 100,
-                          }}
-                        >
-                          {subItem.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ) : (
-              <a
+          {navLink.submenu ? (
+            <div className={headerStyles.dropdown}>
+              <span
                 style={{
                   color: brandColor.color,
                   borderColor: brandColor.color,
                   opacity: brandColor.opacity / 100,
+                  cursor: 'pointer',
                 }}
-                href={navLink.href}
+                onMouseEnter={handleCarsMouseEnter} // Move handler here
+                onMouseLeave={handleCarsMouseLeave}  // Move handler here
               >
                 {navLink.label}
-              </a>
-            )}
-          </div>
+              </span>
+              {isCarsSubmenuOpen && (
+                <ul className={headerStyles.submenu}>
+                  {navLink.submenu.map((subItem) => (
+                    <li key={subItem.label}>
+                      <a
+                        href={subItem.href}
+                        style={{
+                          color: brandColor.color,
+                          borderColor: brandColor.color,
+                          opacity: brandColor.opacity / 100,
+                        }}
+                      >
+                        {subItem.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ) : (
+            <a
+              style={{
+                color: brandColor.color,
+                borderColor: brandColor.color,
+                opacity: brandColor.opacity / 100,
+              }}
+              href={navLink.href}
+            >
+              {navLink.label}
+            </a>
+          )}
+        </div>
         ))}
       </nav>
     </header>
