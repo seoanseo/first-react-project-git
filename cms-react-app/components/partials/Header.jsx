@@ -14,7 +14,7 @@ function Header({
     },
     {
       href: '/cms-react-cars',
-      label: 'Cars',
+      label: 'Cars!',
     },
   ];
 
