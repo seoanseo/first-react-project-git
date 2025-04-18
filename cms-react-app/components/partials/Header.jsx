@@ -1,32 +1,18 @@
-import headerStyles from '../../styles/header.module.css';
-import { useState } from 'react';
+import React from 'react';
 
+class App extends React.Component { 
+    handleMouseMove = (event) => {
+        console.log('Mouse position:', event.clientX, event.clientY);
+        // Additional logic
+      };
 
-const App = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  render() {
+    return (
+        <div onMouseMove={this.handleMouseMove}>
+        <p>Move your mouse and click over this area.</p>
+      </div>
+    );
+  }
+}
 
-  const handleMouseEnter = () => {
-    console.log('Mouse entered!');
-    setIsHovered(true);
-  };
-  
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-  
-
-  const textColor = isHovered ? 'red' : 'black';
-
-  return (
-    <h1
-    onClick={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={{ color: textColor }}
-    >
-      Hover over me to change text color
-    </h1>
-  );
-};
-
-export default App;
+export default App; 
