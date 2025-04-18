@@ -1,32 +1,59 @@
+// Import Island primitive from pre-built HubSpot CMS React components
+import { Island } from "@hubspot/cms-components";
+
+// Import MenuBar component from the islands directory
+import MenuBar from "../islands/MenuBar.jsx?island";
+
+// Import layout component
+import Layout from "../Layout.jsx";
+
+
+
+
+const navLinks = [
+  {
+    href: '/cms-react-home',
+    label: 'Home',
+  },
+  {
+    label: 'Cars!',
+    submenu: [
+      {
+        href: '/cms-react-cars/sedans',
+        label: 'Sedans',
+      },
+      {
+        href: '/cms-react-cars/suvs',
+        label: 'SUVs',
+      },
+      {
+        href: '/cms-react-cars/trucks',
+        label: 'Trucks',
+      },
+      // Add more submenu items as needed
+    ],
+  },
+];
+
 import headerStyles from '../../styles/header.module.css';
-import { useState } from 'react';
 
-
-const App = () => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    console.log('Mouse entered!');
-    setIsHovered(true);
-  };
-  
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-  
-
-  const textColor = isHovered ? 'red' : 'black';
-
+function Header({
+  brandColor = {
+    opacity: 100,
+    color: '#FF7A59',
+  },
+  text = `Hello from HubSpot Academy's React Course!`,
+}) {
+ 
   return (
-    <h1
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={{ color: textColor }}
-    >
-      Hover over me to change text color
-    </h1>
+    <Layout>
+    <header className={headerStyles.header}>
+      <h1>{text}</h1>
+       <Island module={MenuBar} navLinks={navLinks} brandColor={brandColor} />
+     
+          </header>
+          </Layout>
   );
-};
+}
 
-export default App;
+export default Header;
