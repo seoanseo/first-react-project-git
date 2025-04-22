@@ -15,6 +15,7 @@ export function Component({ fieldValues, hublParameters = {} }) {
    
     return (
         <Layout>
+            {pickedMenuId}
             <Island module={MenuBar} navLinks={pickedMenuId} brandColor={brandColor} />
         </Layout>
     );
