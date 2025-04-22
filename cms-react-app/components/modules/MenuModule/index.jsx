@@ -2,7 +2,7 @@
 import { Island } from "@hubspot/cms-components";
 
 // Import MenuBar component from the islands directory
-import MenuBar from "../islands/MenuBar.jsx?island";
+import MenuBar from "../../islands/MenuBar.jsx?island";
 
 // Import layout component
 import Layout from '../../Layout.jsx';
