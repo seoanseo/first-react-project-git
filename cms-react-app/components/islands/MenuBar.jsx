@@ -6,16 +6,16 @@ import { useState } from 'react';
 
 
 
-export default function CounterButton({ navLinks, brandColor }) {
+export default function NavMenu({ navLinks, brandColor }) {
     // Create a state variable to hold the count
-const [isCarsSubmenuOpen, setIsCarsSubmenuOpen] = useState(false);
+const [isSubmenuOpen, setisSubmenuOpen] = useState(false);
 
-  const handleCarsMouseEnter = () => {
-    setIsCarsSubmenuOpen(true);
+  const handleItemsMouseEnter = () => {
+    setisSubmenuOpen(true);
   };
 
-  const handleCarsMouseLeave = () => {
-    setIsCarsSubmenuOpen(false);
+  const handleItemsMouseLeave = () => {
+    setisSubmenuOpen(false);
   };
     
 
@@ -26,8 +26,8 @@ const [isCarsSubmenuOpen, setIsCarsSubmenuOpen] = useState(false);
         {navLink.submenu ? (
           <div
             className={headerStyles.dropdown}
-            onMouseEnter={handleCarsMouseEnter}
-            onMouseLeave={handleCarsMouseLeave}
+            onMouseEnter={handleItemsMouseEnter}
+            onMouseLeave={handleItemsMouseLeave}
           >
             <span
               style={{
@@ -39,7 +39,7 @@ const [isCarsSubmenuOpen, setIsCarsSubmenuOpen] = useState(false);
             >
               {navLink.label}
             </span>
-            {isCarsSubmenuOpen && (
+            {isSubmenuOpen && (
               <ul className={headerStyles.submenu}>
                 {navLink.submenu.map((subItem) => (
                   <li key={subItem.label}>
