@@ -16,7 +16,7 @@ const navLinks = [
     label: 'Home',
   },
   {
-    label: 'Cars!',
+    label: 'Cars!!!!',
     submenu: [
       {
         href: '/cms-react-cars/sedans',

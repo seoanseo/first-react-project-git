@@ -1,71 +1,77 @@
-import headerStyles from "../../styles/header.module.css";
-import React, { useState } from "react"; // Ensure React is imported
+// Import stylesheet
+import headerStyles from '../../styles/header.module.css';
 
-export default function MenuBar({ navLinks, brandColor }) {
-  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
+// Import useState hook to update the count number
+import { useState } from 'react';
+
+
+
+export default function NavMenu({ navLinks, brandColor }) {
+    // Create a state variable to hold the count
+const [isSubmenuOpen, setisSubmenuOpen] = useState(false);
 
   const handleItemsMouseEnter = () => {
-    setIsSubmenuOpen(true);
+    setisSubmenuOpen(true);
   };
 
   const handleItemsMouseLeave = () => {
-    setIsSubmenuOpen(false);
+    setisSubmenuOpen(false);
   };
+    
 
-  return (
-    <nav className={headerStyles.nav}>
-      {navLinks &&
-        navLinks.map((navLink) => (
-          <div key={navLink.label} className={headerStyles.navItem}>
-            {navLink.submenu ? (
-              <div
-                className={headerStyles.dropdown}
-                onMouseEnter={handleItemsMouseEnter}
-                onMouseLeave={handleItemsMouseLeave}
-              >
-                <span
-                  style={{
-                    color: brandColor.color,
-                    borderColor: brandColor.color,
-                    opacity: brandColor.opacity / 100,
-                    cursor: "pointer",
-                  }}
-                >
-                  {navLink.label}
-                </span>
-                {isSubmenuOpen && (
-                  <ul className={headerStyles.submenu}>
-                    {navLink.submenu.map((subItem) => (
-                      <li key={subItem.label}>
-                        <a
-                          href={subItem.href}
-                          style={{
-                            color: brandColor.color,
-                            borderColor: brandColor.color,
-                            opacity: brandColor.opacity / 100,
-                          }}
-                        >
-                          {subItem.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ) : (
-              <a
-                style={{
-                  color: brandColor.color,
-                  borderColor: brandColor.color,
-                  opacity: brandColor.opacity / 100,
-                }}
-                href={navLink.href}
-              >
-                {navLink.label}
-              </a>
+    // Return a menu   
+    return <nav className={headerStyles.nav}>
+      <h1>hello</h1>
+    {navLinks.map((navLink) => (
+      <div key={navLink.label} className={headerStyles.navItem}>
+        {navLink.submenu ? (
+          <div
+            className={headerStyles.dropdown}
+            onMouseEnter={handleItemsMouseEnter}
+            onMouseLeave={handleItemsMouseLeave}
+          >
+            <span
+              style={{
+                color: brandColor.color,
+                borderColor: brandColor.color,
+                opacity: brandColor.opacity / 100,
+                cursor: 'pointer', // Indicate it's interactive
+              }}
+            >
+              {navLink.label}
+            </span>
+            {isSubmenuOpen && (
+              <ul className={headerStyles.submenu}>
+                {navLink.submenu.map((subItem) => (
+                  <li key={subItem.label}>
+                    <a
+                      href={subItem.href}
+                      style={{
+                        color: brandColor.color,
+                        borderColor: brandColor.color,
+                        opacity: brandColor.opacity / 100,
+                      }}
+                    >
+                      {subItem.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
-        ))}
-    </nav>
-  );
+        ) : (
+          <a
+            style={{
+              color: brandColor.color,
+              borderColor: brandColor.color,
+              opacity: brandColor.opacity / 100,
+            }}
+            href={navLink.href}
+          >
+            {navLink.label}
+          </a>
+        )}
+      </div>
+    ))}
+  </nav>;
 }
