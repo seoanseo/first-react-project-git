@@ -9,17 +9,12 @@ import Layout from '../../Layout.jsx';
 
 
 // Export the MenuModule Component
-export const Component = ({ fieldValues }) => {
-    // Constants for the fieldValues and hublParameters
-    const pickedMenu = fieldValues.picked_menu; // Access the picked_menu value
-    
-    // Return the TeamModule component
-    return (
-        <Layout>
-           <Island module={MenuBar} navLinks={pickedMenu} />
-              </Layout>
-      );
-}
+
+export function Component({ fieldValues }) {
+    const { pickedMenu } = fieldValues;
+    return <Island module={MenuBar} navLinks={pickedMenu} />;
+  }
+
 
 // Re-export the fields from fields.jsx
 export { fields } from './fields.jsx';
