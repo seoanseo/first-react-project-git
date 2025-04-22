@@ -42,61 +42,8 @@ const menuItems = fieldValues.menu_items ? fieldValues.menu_items.map((item) => 
     return menuItem;
 }) : [];
     return <nav className={headerStyles.nav}>
-        {menuItems.map((navLink) => (
-          <div key={navLink.label} className={headerStyles.navItem}>
-            {navLink.submenu ? (
-              <div
-                className={headerStyles.dropdown}
-                onMouseEnter={handleItemsMouseEnter}
-                onMouseLeave={handleItemsMouseLeave}
-              >
-                <span
-                  style={{
-                    color: brandColor.color,
-                    borderColor: brandColor.color,
-                    opacity: brandColor.opacity / 100,
-                    cursor: 'pointer', // Indicate it's interactive
-                  }}
-                >
-                  {navLink.label}
-                </span>
-                {isSubmenuOpen && (
-                  <ul className={headerStyles.submenu}>
-                    {navLink.submenu.map((subItem) => (
-                      <li key={subItem.label}>
-                        <a
-                          href={subItem.href}
-                          style={{
-                            color: brandColor.color,
-                            borderColor: brandColor.color,
-                            opacity: brandColor.opacity / 100,
-                          }}
-                        >
-                          {subItem.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ) : (
-              <a
-                style={{
-                  color: brandColor.color,
-                  borderColor: brandColor.color,
-                  opacity: brandColor.opacity / 100,
-                }}
-                href={navLink.href}
-              >
-                {navLink.label}
-              </a>
-            )}
-          </div>
-        ))}
-        <div className={headerStyles.navItem}>
-        <Island module={MenuBar}  navLinks={menuItems} brandColor={brandColor} />
-            </div>
-      </nav>;
+       <Island module={MenuBar}  navLinks={menuItems} brandColor={brandColor} />
+        </nav>;
 }
 
 export { fields } from './fields.jsx';
