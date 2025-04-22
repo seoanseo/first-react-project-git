@@ -1,64 +1,7 @@
 // Import the pre-built module fields
-import {
-    RepeatedFieldGroup,
-    ModuleFields,
-    BooleanField,
-    TextField,
-    LinkField,
-    } from "@hubspot/cms-components/fields";
-
-    export const fields = (
-        <ModuleFields>
-            <RepeatedFieldGroup 
-            name="menu_items"
-            label="Menu Items"
-            occurrence={{
-                min: 1,
-                max: 500,
-                default: 2,
-            }}
-            default={[
-                {
-                    text: "Home",
-                    show_submenu: false,
-                    link: {
-                        href: "https://seoanseo.ca",
-                        label: "Home",
-                    },
-                },
-                {
-                    text: "Cars!",
-                    show_submenu: true,
-                    link: {
-                        href: "https://seoanseo.ca",
-                        label: "Cars!",
-                    },
-                },
-            ]}>
-            <TextField
-                name="text"
-                label="Link Text"
-                description="The text to display in the header."
-                required={true}
-                default="Home"
-            />
-            <BooleanField
-                name="show_submenu"
-                label="Show Submenu"
-                description="Whether to show the submenu or not."
-            />
-            <LinkField
-                name="link"
-                label="Link"
-                description="The menu to display."
-                required={true}
-                default={{ 
-                    href: "https://seoanseo.ca",
-                    label: "Home",
-                }}
-            /> 
-            
-            </RepeatedFieldGroup>    
-        </ModuleFields>
-        
-        );
+import {ModuleFields,MenuField} from "@hubspot/cms-components/fields";
+export const fields = (
+<ModuleFields>
+<MenuField label="Pick Menu"name="picked_menu"/>
+</ModuleFields>
+);
