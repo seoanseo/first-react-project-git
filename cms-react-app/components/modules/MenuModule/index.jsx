@@ -52,5 +52,6 @@ export { fields } from './fields.jsx';
 
 export const meta = {
     label: `The Menu Module`,
+    global: true,
    
 }
