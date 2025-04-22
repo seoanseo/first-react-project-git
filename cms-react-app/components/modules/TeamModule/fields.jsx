@@ -39,7 +39,8 @@ import {
         ]}
         >
        <FontField
-        label="Team Member Font"/>
+        label="Team Member Font"
+        name="team_member_font"/>
         <ImageField
         label="Team Member Photo"
         name="team_member_photo"
