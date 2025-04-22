@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Island } from "@hubspot/cms-components";
 import MenuBar from "../../islands/MenuBar.jsx?island";
-import Button from "./islands/BasicButton.jsx?island";
+import Button from "../../islands/BasicButton.jsx?island";
 import Layout from "../../Layout.jsx";
 
 export function Component({ fieldValues, hublParameters = {} }) {
