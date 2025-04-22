@@ -17,10 +17,7 @@ export const Component = () => {
     label: `Team Module`,
     }
 
-    // Export the TeamModule Component
-export const Component = ({ fieldValues, hublParameters = {} }) => {
-    // Write React code here
-    }
+
 
     // Constants for the fieldValues and hublParameters
 const { team_members: teamMembers } = fieldValues;
