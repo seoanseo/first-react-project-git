@@ -51,6 +51,10 @@ import {
                 label="Link"
                 description="The menu to display."
                 required={true}
+                default={{
+                    href: "https://seoanseo.ca",
+                    label: "Home",
+                }}
             /> 
             
             </RepeatedFieldGroup>    
