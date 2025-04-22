@@ -7,7 +7,7 @@ import MenuBar from "../../islands/MenuBar.jsx?island";
 import BlankIsland from "../../islands/BlankIsland.jsx?island";
 import Layout from '../../Layout.jsx';
 
-export function Component({ fieldValues, hublParameters = {} }) {
+export function Component({ fieldValues, hublParameters = {is_global:true} }) {
      const brandColor = {
         color: "#007bff",
         opacity: 100,
@@ -52,5 +52,5 @@ export { fields } from './fields.jsx';
 
 export const meta = {
     label: `The Menu Module`,
-    is_global: true
+   
 }
