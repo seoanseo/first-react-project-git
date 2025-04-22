@@ -60,7 +60,7 @@ export const fields = (
               name="submenu_container"
               label="Submenu"
               visibility={{
-                controlling_field: 'menu_items.show_submenu',
+                controlling_field_path: 'menu_items.show_submenu',
                   controlling_field_operator: 'EQUAL_TO',
                   controlling_field_value: true,
               }}
