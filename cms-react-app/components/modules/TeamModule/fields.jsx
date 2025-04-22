@@ -4,7 +4,7 @@ import {
     ModuleFields,
     ImageField,
     TextField,
-    FontField
+    MenuField
     } from "@hubspot/cms-components/fields";
 
     export const fields = (
@@ -38,9 +38,9 @@ import {
         },
         ]}
         >
-       <FontField
-        label="Team Member Font"
-        name="team_member_font"/>
+       <MenuField
+        label="Team Member Menu"
+        name="team_member_Menu"/>
         <ImageField
         label="Team Member Photo"
         name="team_member_photo"
