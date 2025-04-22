@@ -55,6 +55,6 @@ import {
         default="Jane Doe"
         required
         />
-        </RepeatedFieldGroup>
+        </FieldGroup>
         </ModuleFields>
         );
