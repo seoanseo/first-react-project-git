@@ -28,7 +28,7 @@ const menuItems = fieldValues.menu_items ? fieldValues.menu_items.map((item) => 
         show_submenu: item.show_submenu,
         sub_menu_items: item.submenu_items ? item.sub_menu_items.map(sub => ({
             label: sub.text,
-            href: sub.link.href,
+            href: sub.link.url.href,
         })) : [],
     };
 

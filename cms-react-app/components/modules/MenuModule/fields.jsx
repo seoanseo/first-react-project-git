@@ -56,6 +56,54 @@ import {
         no_follow: false,
       }}
     />
+      <RepeatedFieldGroup 
+            name="sub_menu_items"
+            label="Sub Menu Items"
+            occurrence={{
+                min: 1,
+                max: 500,
+              
+            }
+            }>
+            <TextField
+                name="text"
+                label="Link Text"
+                description="The text to display in the header."
+                required={true}
+            />
+            <BooleanField
+                name="show_submenu"
+                label="Show Submenu"
+                description="Whether to show the submenu or not."
+            />
+            <LinkField
+      name="link_field"
+      label="Link"
+      required={false}
+      locked={false}
+      supportedTypes={[
+        'EXTERNAL',
+        'CONTENT',
+        'FILE',
+        'EMAIL_ADDRESS',
+        'BLOG',
+        'CALL_TO_ACTION',
+        'PHONE_NUMBER',
+        'WHATSAPP_NUMBER',
+        'PAYMENT',
+      ]}
+      showAdvancedRelOptions={true}
+      default={{
+        url: {
+          content_id: null,
+          type: 'EXTERNAL',
+          href: '',
+        },
+        open_in_new_tab: false,
+        no_follow: false,
+      }}
+    />
+        </RepeatedFieldGroup>  
         </RepeatedFieldGroup>    
         </ModuleFields>
         
