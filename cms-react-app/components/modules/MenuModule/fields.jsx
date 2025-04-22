@@ -55,6 +55,7 @@ import {
                 name="show_submenu"
                 label="Show Submenu"
                 description="Whether to show the submenu or not."
+                display="toggle"
             />
       <RepeatedFieldGroup 
             name="sub_menu_items"
