@@ -7,7 +7,7 @@ import MenuBar from "../../islands/MenuBar.jsx?island";
 import BlankIsland from "../../islands/BlankIsland.jsx?island";
 import Layout from '../../Layout.jsx';
 
-export function Component({ fieldValues, hublParameters = {is_global:true} }) {
+export function Component({ fieldValues, hublParameters = {is_global=true} }) {
      const brandColor = {
         color: "#007bff",
         opacity: 100,
@@ -43,7 +43,7 @@ const menuItems = fieldValues.menu_items
   : [];
 
     return <nav className={headerStyles.nav}>
-        {prettyPrint(menuItems)}
+        {prettyPrint(hublParameters)}
        <Island module={MenuBar}  navLinks={menuItems} brandColor={brandColor} />
         </nav>;
 }
