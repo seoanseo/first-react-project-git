@@ -60,8 +60,8 @@ export const fields = (
                   label="Sub Menu Items"
                   visibility={{
                     controlling_field_path: 'menu_items.show_submenu',
-                      controlling_field_operator: 'EQUAL_TO',
-                      controlling_field_value: true,
+                    controlling_value_regex: 'true',
+                    operator: 'EQUAL',
                   }}
                   occurrence={{
                       min: 0,
