@@ -22,7 +22,7 @@ import {
                 name="text"
                 label="Link Text"
                 description="The text to display in the header."
-                required={true}
+                
             />
             <BooleanField
                 name="show_submenu"
@@ -69,7 +69,7 @@ import {
                 name="text"
                 label="Link Text"
                 description="The text to display in the header."
-                required={true}
+                
             />
             <BooleanField
                 name="show_submenu"
