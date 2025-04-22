@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 
 
-export default function NavMenu({ navLinks, brandColor }) {
+export default function CounterButton({ navLinks, brandColor }) {
     // Create a state variable to hold the count
 const [isSubmenuOpen, setisSubmenuOpen] = useState(false);
 
@@ -21,7 +21,6 @@ const [isSubmenuOpen, setisSubmenuOpen] = useState(false);
 
     // Return a menu   
     return <nav className={headerStyles.nav}>
-      <h1>hello</h1>
     {navLinks.map((navLink) => (
       <div key={navLink.label} className={headerStyles.navItem}>
         {navLink.submenu ? (
