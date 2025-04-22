@@ -24,12 +24,7 @@ import {
                 description="The text to display in the header."
                 
             />
-            <BooleanField
-                name="show_submenu"
-                label="Show Submenu"
-                description="Whether to show the submenu or not."
-            />
-            <LinkField
+           <LinkField
       name="link_field"
       label="Link"
       required={false}
@@ -56,6 +51,11 @@ import {
         no_follow: false,
       }}
     />
+     <BooleanField
+                name="show_submenu"
+                label="Show Submenu"
+                description="Whether to show the submenu or not."
+            />
       <RepeatedFieldGroup 
             name="sub_menu_items"
             label="Sub Menu Items"

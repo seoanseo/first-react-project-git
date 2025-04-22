@@ -21,17 +21,27 @@ export function Component({ fieldValues, hublParameters = {} }) {
         </pre>
     );
 };
-const menuItems = fieldValues.menu_items ? fieldValues.menu_items.map((item) => {
-    const menuItem = {
+const menuItems = fieldValues.menu_items
+  ? fieldValues.menu_items.map((item) => {
+      const hasSubmenu = item.show_submenu && Array.isArray(item.sub_menu_items) && item.sub_menu_items.length > 0;
+
+      const menuItem = {
         label: item.text,
-        href: item.link_field.url.href,
-        show_submenu: item.show_submenu,
+        href: item.link_field?.url?.href || '',
+        sub_item_1: item.sub_menu_items?.[0]?.text || '',
       };
 
-  
+      if (hasSubmenu) {
+        menuItem.submenu = item.sub_menu_items.map((sub) => ({
+          label: sub.text,
+          href: sub.link_field?.url?.href || '',
+        }));
+      }
 
-    return menuItem;
-}) : [];
+      return menuItem;
+    })
+  : [];
+
     return <nav className={headerStyles.nav}>
         {prettyPrint(menuItems)}
        <Island module={MenuBar}  navLinks={menuItems} brandColor={brandColor} />
@@ -42,4 +52,5 @@ export { fields } from './fields.jsx';
 
 export const meta = {
     label: `The Menu Module`,
+    is_global: true
 }

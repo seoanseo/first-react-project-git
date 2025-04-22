@@ -1,76 +1,70 @@
-// Import stylesheet
 import headerStyles from '../../styles/header.module.css';
-
-// Import useState hook to update the count number
 import { useState } from 'react';
 
-
-
 export default function CounterButton({ navLinks, brandColor }) {
-    // Create a state variable to hold the count
-const [isSubmenuOpen, setisSubmenuOpen] = useState(false);
+  const [openIndex, setOpenIndex] = useState(null); // Track which submenu is open
 
-  const handleItemsMouseEnter = () => {
-    setisSubmenuOpen(true);
+  const handleMouseEnter = (index) => {
+    setOpenIndex(index);
   };
 
-  const handleItemsMouseLeave = () => {
-    setisSubmenuOpen(false);
+  const handleMouseLeave = () => {
+    setOpenIndex(null);
   };
-    
 
-    // Return a menu   
-    return <nav className={headerStyles.nav}>
-    {navLinks.map((navLink) => (
-      <div key={navLink.label} className={headerStyles.navItem}>
-        {navLink.submenu ? (
-          <div
-            className={headerStyles.dropdown}
-            onMouseEnter={handleItemsMouseEnter}
-            onMouseLeave={handleItemsMouseLeave}
-          >
-            <span
+  return (
+    <nav className={headerStyles.nav}>
+      {navLinks.map((navLink, index) => (
+        <div key={navLink.label} className={headerStyles.navItem}>
+          {navLink.submenu ? (
+            <div
+              className={headerStyles.dropdown}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <span
+                style={{
+                  color: brandColor.color,
+                  borderColor: brandColor.color,
+                  opacity: brandColor.opacity / 100,
+                  cursor: 'pointer',
+                }}
+              >
+                {navLink.label}
+              </span>
+              {openIndex === index && (
+                <ul className={headerStyles.submenu}>
+                  {navLink.submenu.map((subItem) => (
+                    <li key={subItem.label}>
+                      <a
+                        href={subItem.href}
+                        style={{
+                          color: brandColor.color,
+                          borderColor: brandColor.color,
+                          opacity: brandColor.opacity / 100,
+                        }}
+                      >
+                        {subItem.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ) : (
+            <a
               style={{
                 color: brandColor.color,
                 borderColor: brandColor.color,
                 opacity: brandColor.opacity / 100,
-                cursor: 'pointer', // Indicate it's interactive
               }}
+              href={navLink.href}
             >
               {navLink.label}
-            </span>
-            {isSubmenuOpen && (
-              <ul className={headerStyles.submenu}>
-                {navLink.submenu.map((subItem) => (
-                  <li key={subItem.label}>
-                    <a
-                      href={subItem.href}
-                      style={{
-                        color: brandColor.color,
-                        borderColor: brandColor.color,
-                        opacity: brandColor.opacity / 100,
-                      }}
-                    >
-                      {subItem.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ) : (
-          <a
-            style={{
-              color: brandColor.color,
-              borderColor: brandColor.color,
-              opacity: brandColor.opacity / 100,
-            }}
-            href={navLink.href}
-          >
-            {navLink.label}
-          </a>
-        )}
-      </div>
-    ))}
-  </nav>;
+            </a>
+          )}
+        </div>
+      ))}
+    </nav>
+  );
 }
