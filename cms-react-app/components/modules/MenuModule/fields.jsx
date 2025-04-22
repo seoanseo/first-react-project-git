@@ -30,18 +30,10 @@ import {
                 description="Whether to show the submenu or not."
             />
             <LinkField
-                name="link"
+                name="the_link"
                 label="Link"
                 description="The menu to display."
-                default={{
-                    url: {
-                      content_id: null,
-                      type: 'EXTERNAL',
-                      href: '',
-                    },
-                    open_in_new_tab: false,
-                    no_follow: false,
-                  }}
+                
             /> 
             if (item.show_submenu && item.sub_menu_items) {   
             <RepeatedFieldGroup 
