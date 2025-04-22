@@ -1,6 +1,6 @@
 // Import the pre-built module fields
 import {
-    FieldGroup,
+    RepeatedFieldGroup,
     ModuleFields,
     ImageField,
     TextField,
@@ -9,7 +9,7 @@ import {
 
     export const fields = (
         <ModuleFields>
-        <FieldGroup
+        <RepeatedFieldGroup
         name="team_members"
         label="Team Members"
         occurrence={{
@@ -55,6 +55,6 @@ import {
         default="Jane Doe"
         required
         />
-        </FieldGroup>
+        </RepeatedFieldGroup>
         </ModuleFields>
         );
