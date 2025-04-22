@@ -55,19 +55,14 @@ export const fields = (
               description="Whether to show the submenu or not."
               display="toggle"
           />
-          {/* Target 'show_submenu' at the same level */}
-          <FieldGroup
-              name="submenu_container"
-              label="Submenu"
-              visibility={{
-                controlling_field_path: 'menu_items.show_submenu',
-                  controlling_field_operator: 'EQUAL_TO',
-                  controlling_field_value: true,
-              }}
-          >
-              <RepeatedFieldGroup
+          <RepeatedFieldGroup
                   name="sub_menu_items"
                   label="Sub Menu Items"
+                  visibility={{
+                    controlling_field_path: 'menu_items.show_submenu',
+                      controlling_field_operator: 'EQUAL_TO',
+                      controlling_field_value: true,
+                  }}
                   occurrence={{
                       min: 0,
                       max: 500,
@@ -106,7 +101,6 @@ export const fields = (
                       }}
                   />
               </RepeatedFieldGroup>
-          </FieldGroup>
-      </RepeatedFieldGroup>
+                </RepeatedFieldGroup>
   </ModuleFields>
 );
