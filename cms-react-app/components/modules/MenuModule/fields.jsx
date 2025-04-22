@@ -60,7 +60,7 @@ import {
             name="sub_menu_items"
             label="Sub Menu Items"
             occurrence={{
-                min: 1,
+                min: 0,
                 max: 500,
               
             }
