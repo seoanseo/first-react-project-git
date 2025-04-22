@@ -22,7 +22,7 @@ import {
                     text: "Home",
                     show_submenu: false,
                     link: {
-                        href: "/cms-react-home",
+                        href: "https://seoanseo.ca",
                         label: "Home",
                     },
                 },
@@ -30,7 +30,7 @@ import {
                     text: "Cars!",
                     show_submenu: true,
                     link: {
-                        href: "/cms-react-cars",
+                        href: "https://seoanseo.ca",
                         label: "Cars!",
                     },
                 },
@@ -66,7 +66,7 @@ import {
                     text: "Home",
                     show_submenu: false,
                     link: {
-                        href: "/cms-react-home",
+                        href: "https://seoanseo.ca",
                         label: "Home",
                     },
                 },
@@ -74,7 +74,7 @@ import {
                     text: "Cars!",
                     show_submenu: false,
                     link: {
-                        href: "/cms-react-cars",
+                        href: "https://seoanseo.ca",
                         label: "Cars!",
                     },
                 },
