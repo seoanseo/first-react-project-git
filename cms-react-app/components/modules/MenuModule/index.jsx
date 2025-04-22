@@ -51,4 +51,8 @@ export { fields } from './fields.jsx';
 export const meta = {
     label: `The Menu Module`,
     description: `A module that displays a menu bar with links and submenus.`,
+    icon: `menu`,
+    category: `Custom Modules`,
+    type: `module`,
+    isGlobal: true,
 }
