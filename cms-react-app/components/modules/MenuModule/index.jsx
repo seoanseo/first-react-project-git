@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Island } from "@hubspot/cms-components";
+// Import the pre-built module fields
+import {
+    ModuleFields,
+    MenuField
+    } from "@hubspot/cms-components/fields";
+
+    import { Menu, Island } from "@hubspot/cms-components";
 import MenuBar from "../../islands/MenuBar.jsx?island";
-import Button from "../../islands/BasicButton.jsx?island";
-import Layout from "../../Layout.jsx";
+import Layout from '../../Layout.jsx';
 
 export function Component({ fieldValues, hublParameters = {} }) {
      const brandColor = {
@@ -20,8 +24,13 @@ export function Component({ fieldValues, hublParameters = {} }) {
 };
 const menuItems = fieldValues.menu_items ? fieldValues.menu_items.map((item) => {
     const menuItem = {
-        href: item.link_field.url.href,
         label: item.text,
+        href: item.link.href,
+        show_submenu: item.show_submenu,
+        sub_menu_items: item.submenu_items ? item.sub_menu_items.map(sub => ({
+            label: sub.text,
+            href: sub.link.href,
+        })) : [],
     };
 
     if (item.show_submenu && item.sub_menu_items) {
@@ -37,7 +46,7 @@ const menuItems = fieldValues.menu_items ? fieldValues.menu_items.map((item) => 
         <Layout>
          {prettyPrint(menuItems)}
             
-        <Island module={Button} />
+        <Island module={MenuBar} NavLinks={menuItems} brandColor={brandColor} />
        </Layout>
     );
 }
