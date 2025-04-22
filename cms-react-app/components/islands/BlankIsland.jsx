@@ -1,4 +1,3 @@
-export default function Hello({ defaultCount }) {
-     
+export default function Hello({ defaultCount }) {    
     return <button>Hello</button>;
 }
