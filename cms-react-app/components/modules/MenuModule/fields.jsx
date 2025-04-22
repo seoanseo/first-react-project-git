@@ -60,6 +60,11 @@ import {
       <RepeatedFieldGroup 
             name="sub_menu_items"
             label="Sub Menu Items"
+            visibility={{
+              controlling_field: 'show_submenu',
+              controlling_field_operator: 'EQUAL_TO',
+              controlling_field_value: true,
+          }}
             occurrence={{
                 min: 0,
                 max: 500,
