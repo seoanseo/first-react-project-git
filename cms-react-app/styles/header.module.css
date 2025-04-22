@@ -25,11 +25,11 @@
 
 .dropdown {
   position: relative;
+  padding: 10px 15px;
 }
 
 .dropdown span {
-  display: block;
-  padding: 10px 15px; /* Adjust padding as needed */
+ 
   text-decoration: none;
   cursor: pointer;
 }

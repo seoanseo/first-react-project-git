@@ -42,7 +42,7 @@ function Header({
     opacity: 100,
     color: '#FF7A59',
   },
-  text = `Hello from HubSpot Academy's React Course!`,
+  text = `This took forever!`,
 }) {
  
   return (
