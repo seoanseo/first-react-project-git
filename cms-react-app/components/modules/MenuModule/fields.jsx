@@ -16,12 +16,13 @@ import {
                 min: 1,
                 max: 500,
                 default: 2,
-            }}>
+            }
+            }>
             <TextField
                 name="text"
                 label="Link Text"
                 description="The text to display in the header."
-                default="Home"
+                required={true}
             />
             <BooleanField
                 name="show_submenu"
@@ -32,12 +33,43 @@ import {
                 name="link"
                 label="Link"
                 description="The menu to display."
-                default={{ 
-                    href: "https://seoanseo.ca",
-                    label: "Home",
-                }}
+                default={{
+                    url: {
+                      content_id: null,
+                      type: 'EXTERNAL',
+                      href: '',
+                    },
+                    open_in_new_tab: false,
+                    no_follow: false,
+                  }}
             /> 
-            
+            if (item.show_submenu && item.sub_menu_items) {   
+            <RepeatedFieldGroup 
+            name="sub_menu_items"
+            label="Sub Menu Items"
+            occurrence={{
+                min: 1,
+                max: 500,
+                default: 2,
+            }}
+            >
+            <TextField
+                name="text"
+                label="Link Text"
+                description="The text to display in the header."
+                required={true}
+            />
+            <BooleanField
+                name="show_submenu"
+                label="Show Submenu"
+                description="Whether to show the submenu or not."
+            />
+            <LinkField
+                name="link"
+                label="Link"
+                description="The menu to display."
+                />   
+            </RepeatedFieldGroup> }
             </RepeatedFieldGroup>    
         </ModuleFields>
         
