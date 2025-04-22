@@ -15,7 +15,7 @@ import {
             occurrence={{
                 min: 1,
                 max: 500,
-                default: 2,
+              
             }
             }>
             <TextField
@@ -50,7 +50,7 @@ import {
             occurrence={{
                 min: 1,
                 max: 500,
-                default: 2,
+                
             }}
             >
             <TextField
