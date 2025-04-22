@@ -19,21 +19,21 @@ import {
         default={[
         {
         team_member_photo: {
-        src: "https://via.placeholder.com/150", alt: "Jane Doe"
+        src: "https://picsum.photos/150", alt: "Jane Doe 1"
         },
-        team_member_name: "Jane Doe"
-        },
-        {
-        team_member_photo: {
-        src: "https://via.placeholder.com/150", alt: "John Doe"
-        },
-        team_member_name: "John Doe"
+        team_member_name: "Jane Doe 1"
         },
         {
         team_member_photo: {
-        src: "https://via.placeholder.com/150", alt: "Jack Doe"
+        src: "https://picsum.photos/150", alt: "John Doe 2"
         },
-        team_member_name: "Jack Doe"
+        team_member_name: "John Doe 2"
+        },
+        {
+        team_member_photo: {
+        src: "https://picsum.photos/150", alt: "Jack Doe 3"
+        },
+        team_member_name: "Jack Doe 3"
         },
         ]}
         >
@@ -41,7 +41,7 @@ import {
         label="Team Member Photo"
         name="team_member_photo"
         default={{
-        src: "https://via.placeholder.com/150"
+        src: "https://picsum.photos/150"
         }}
         required
         />
