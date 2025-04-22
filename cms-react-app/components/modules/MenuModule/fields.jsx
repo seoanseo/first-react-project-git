@@ -40,6 +40,7 @@ import {
                 label="Link Text"
                 description="The text to display in the header."
                 required={true}
+                default="Home"
             />
             <BooleanField
                 name="show_submenu"
