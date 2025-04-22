@@ -26,12 +26,19 @@ const menuItems = fieldValues.menu_items ? fieldValues.menu_items.map((item) => 
         label: item.text,
         href: item.link_field.url.href,
         show_submenu: item.show_submenu,
+        
+        sub_menu_items: item.submenu_items ? item.sub_menu_items.map(sub => ({
+            label: sub.text,
+            href: sub.link.url.href,
+        })) : [],
     };
 
-   
+  
+
     return menuItem;
 }) : [];
     return <nav className={headerStyles.nav}>
+        {prettyPrint(menuItems)}
        <Island module={MenuBar}  navLinks={menuItems} brandColor={brandColor} />
         </nav>;
 }
@@ -40,9 +47,4 @@ export { fields } from './fields.jsx';
 
 export const meta = {
     label: `The Menu Module`,
-    description: `A module that displays a menu bar with links and submenus.`,
-    icon: `menu`,
-    category: `Custom Modules`,
-    type: `module`,
-    isGlobal: true,
 }
