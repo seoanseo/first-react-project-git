@@ -7,7 +7,7 @@ import MenuBar from "../../islands/MenuBar.jsx?island";
 import BlankIsland from "../../islands/BlankIsland.jsx?island";
 import Layout from '../../Layout.jsx';
 
-export function Component({ fieldValues }) {
+export function Component({ fieldValues, hublParameters = {} }) {
      const brandColor = {
         color: "#007bff",
         opacity: 100,
@@ -27,7 +27,7 @@ const menuItems = fieldValues.menu_items ? fieldValues.menu_items.map((item) => 
         href: item.link_field.url.href,
         show_submenu: item.show_submenu,
         
-        sub_menu_items: item.submenu_items ? item.sub_menu_items.map(sub => ({
+        sub_menu_items: item.sub_menu_items ? item.sub_menu_items.map(sub => ({
             label: sub.text,
             href: sub.link.url.href,
         })) : [],
