@@ -59,7 +59,11 @@ export const fields = (
           <FieldGroup
               name="submenu_container"
               label="Submenu"
-              
+              visibility={{
+                controlling_field_path: 'show_submenu',
+                  controlling_field_operator: 'EQUAL_TO',
+                  controlling_field_value: true,
+              }}
           >
               <RepeatedFieldGroup
                   name="sub_menu_items"
