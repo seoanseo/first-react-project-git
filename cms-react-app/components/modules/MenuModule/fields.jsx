@@ -57,7 +57,7 @@ import {
                 description="Whether to show the submenu or not."
             />
             <LinkField
-                name="link"
+                name="inner_link"
                 label="Link"
                 description="The menu to display."
                 />   
