@@ -37,9 +37,9 @@ const menuItems = fieldValues.menu_items
     })
   : [];
 
-    return <nav className={headerStyles.nav}>
-            <Island module={MenuBar}  navLinks={menuItems} brandColor={brandColor} />
-        </nav>;
+    return <Layout addClass="added_class">
+                <Island module={MenuBar}  navLinks={menuItems} brandColor={brandColor} />
+                </Layout>;
 }
 
 export default Component;

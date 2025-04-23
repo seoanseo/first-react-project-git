@@ -2,10 +2,12 @@
 import { Island } from "@hubspot/cms-components";
 
 // Import MenuBar component from the islands directory
-import MenuModule from "../modules/MenuModule";
+import MenuBar from "../islands/MenuBar.jsx?island";
 
 // Import layout component
 import Layout from "../Layout.jsx";
+
+
 
 
 const navLinks = [
@@ -41,29 +43,23 @@ const navLinks = [
 
 import headerStyles from '../../styles/header.module.css';
 
-function Header(props,{
+function Header({
   brandColor = {
     opacity: 100,
     color: '#FF7A59',
   },
   text = `This took forever!`,
-
 }) {
  
   return (
     <Layout>
     <header className={headerStyles.header}>
-      <h1>{text}  {props.hublData}</h1>
-      
+      <h1>{text}</h1>
+       <Island module={MenuBar} navLinks={navLinks} brandColor={brandColor} />
+     
           </header>
           </Layout>
   );
 }
 
-export const hublDataTemplate = `
-  {% module "the_menu" path="@projects/cms-react-project/cms-react-app/components/modules/MenuModule" %}
-  {% set hublData = "Hello from HubL!" %}
-`;
-
 export default Header;
-
