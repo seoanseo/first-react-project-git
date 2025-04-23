@@ -1,4 +1,7 @@
 import headerStyles from '../../styles/header.module.css';
+import customStyles from '../../styles/custom_menu.module.css';
+
+
 import { useState } from 'react';
 
 export default function CounterButton({ navLinks, brandColor }) {
@@ -13,16 +16,17 @@ export default function CounterButton({ navLinks, brandColor }) {
   };
 
   return (
-    <nav className={headerStyles.nav}>
+    <nav className={customStyles.custom_nav__nav}>
+      <ul role="menu" className={`${customStyles.menu__wrapper} ${customStyles['no-list']}`}>
       {navLinks.map((navLink, index) => (
         <div key={navLink.label} className={headerStyles.navItem}>
           {navLink.submenu ? (
-            <div
+            <li
               className={headerStyles.dropdown}
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
             >
-              <span
+              <a className={customStyles.menu__link}
                 style={{
                   color: brandColor.color,
                   borderColor: brandColor.color,
@@ -31,7 +35,7 @@ export default function CounterButton({ navLinks, brandColor }) {
                 }}
               >
                 {navLink.label}
-              </span>
+              </a>
               {openIndex === index && (
                 <ul className={headerStyles.submenu}>
                   {navLink.submenu.map((subItem) => (
@@ -50,9 +54,10 @@ export default function CounterButton({ navLinks, brandColor }) {
                   ))}
                 </ul>
               )}
-            </div>
+            </li>
           ) : (
-            <a
+            <li className={headerStyles.no_dropdown}>
+              <a className={customStyles.menu__link}
               style={{
                 color: brandColor.color,
                 borderColor: brandColor.color,
@@ -62,9 +67,11 @@ export default function CounterButton({ navLinks, brandColor }) {
             >
               {navLink.label}
             </a>
+            </li>
           )}
         </div>
       ))}
+      </ul>
     </nav>
   );
 }

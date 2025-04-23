@@ -23,12 +23,12 @@
   text-decoration: none;
 }
 
-.dropdown {
+.dropdown, .no_dropdown {
   position: relative;
   padding: 10px 15px;
 }
 
-.dropdown span {
+.dropdown a, .no_dropdown a {
  
   text-decoration: none;
   cursor: pointer;

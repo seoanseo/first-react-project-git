@@ -5,6 +5,7 @@ import {
   TextField,
   LinkField,
   FieldGroup,
+  MenuField
 } from "@hubspot/cms-components/fields";
 
 export const fields = (
