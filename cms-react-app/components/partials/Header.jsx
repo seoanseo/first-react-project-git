@@ -8,8 +8,6 @@ import MenuModule from "../modules/MenuModule";
 import Layout from "../Layout.jsx";
 
 
-
-
 const navLinks = [
   {
     href: '/cms-react-home',
@@ -43,22 +41,29 @@ const navLinks = [
 
 import headerStyles from '../../styles/header.module.css';
 
-function Header({
+function Header(props,{
   brandColor = {
     opacity: 100,
     color: '#FF7A59',
   },
   text = `This took forever!`,
+
 }) {
  
   return (
     <Layout>
     <header className={headerStyles.header}>
-      <h1>{text}</h1>
-       <MenuModule/>
+      <h1>{text}  {props.hublData}</h1>
+      
           </header>
           </Layout>
   );
 }
 
+export const hublDataTemplate = `
+  {% module "the_menu" path="@projects/cms-react-project/cms-react-app/components/modules/MenuModule" %}
+  {% set hublData = "Hello from HubL!" %}
+`;
+
 export default Header;
+
