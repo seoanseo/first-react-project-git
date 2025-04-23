@@ -8,20 +8,14 @@ import BlankIsland from "../../islands/BlankIsland.jsx?island";
 import Layout from '../../Layout.jsx';
 import PrettyPrint from '../../PrettyPrint.jsx';
 
-export function Component({ fieldValues, hublParameters = {is_global : true} }) {
+
+export function Component({ fieldValues = {}, hublParameters = {} }) {
      const brandColor = {
         color: "#007bff",
         opacity: 100,
     };
 
-  // Function to pretty-print fieldValues
-  const prettyPrint = (obj) => {
-    return (
-        <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-            {JSON.stringify(obj, null, 2)}
-        </pre>
-    );
-};
+
 const menuItems = fieldValues.menu_items
   ? fieldValues.menu_items.map((item) => {
       const hasSubmenu = item.show_submenu && Array.isArray(item.sub_menu_items) && item.sub_menu_items.length > 0;
@@ -44,15 +38,15 @@ const menuItems = fieldValues.menu_items
   : [];
 
     return <nav className={headerStyles.nav}>
-        <prettyPrint>hublParameters</prettyPrint>
-       <Island module={MenuBar}  navLinks={menuItems} brandColor={brandColor} />
+            <Island module={MenuBar}  navLinks={menuItems} brandColor={brandColor} />
         </nav>;
 }
 
+export default Component;
 export { fields } from './fields.jsx';
 
 export const meta = {
     label: `The Menu Module`,
-    global
+    global : true,
    
 }

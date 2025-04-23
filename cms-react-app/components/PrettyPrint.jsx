@@ -1,7 +1,7 @@
-function PrettyPrint({ children }) {
+function PrettyPrint(item) {
     return (
         <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-            {JSON.stringify(children, null, 2)}
+          {JSON.stringify(item, null, 2)}
         </pre>
     );
 }

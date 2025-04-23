@@ -2,7 +2,7 @@
 import { Island } from "@hubspot/cms-components";
 
 // Import MenuBar component from the islands directory
-import MenuBar from "../islands/MenuBar.jsx?island";
+import MenuModule from "../modules/MenuModule";
 
 // Import layout component
 import Layout from "../Layout.jsx";
@@ -55,8 +55,7 @@ function Header({
     <Layout>
     <header className={headerStyles.header}>
       <h1>{text}</h1>
-       <Island module={MenuBar} navLinks={navLinks} brandColor={brandColor} />
-     
+       <MenuModule/>
           </header>
           </Layout>
   );
