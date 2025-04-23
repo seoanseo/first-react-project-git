@@ -6,6 +6,7 @@ import { Island } from "@hubspot/cms-components";
 import MenuBar from "../../islands/MenuBar.jsx?island";
 import BlankIsland from "../../islands/BlankIsland.jsx?island";
 import Layout from '../../Layout.jsx';
+import PrettyPrint from '../../PrettyPrint.jsx';
 
 export function Component({ fieldValues, hublParameters = {is_global : true} }) {
      const brandColor = {
@@ -43,7 +44,7 @@ const menuItems = fieldValues.menu_items
   : [];
 
     return <nav className={headerStyles.nav}>
-        {prettyPrint(hublParameters)}
+        <prettyPrint>hublParameters</prettyPrint>
        <Island module={MenuBar}  navLinks={menuItems} brandColor={brandColor} />
         </nav>;
 }
@@ -52,6 +53,6 @@ export { fields } from './fields.jsx';
 
 export const meta = {
     label: `The Menu Module`,
-    global: true,
+    global
    
 }
