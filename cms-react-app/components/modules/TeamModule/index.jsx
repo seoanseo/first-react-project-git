@@ -1,5 +1,6 @@
 // Import layout component
 import Layout from '../../Layout.jsx';
+import PPrint from '../../PrettyPrint.jsx';
 
 import { Island } from "@hubspot/cms-components";
 
@@ -19,15 +20,15 @@ import styles from "../../../styles/team.module.css";
 
 
 // Export the TeamModule Component
-export const Component = ({ fieldValues, hublParameters = {} }) => {
+export const Component = (props, fieldValues, hublParameters = {} ) => {
     // Constants for the fieldValues and hublParameters
-    const { team_members: teamMembers } = fieldValues;
+    const { team_members: teamMembers } = props;
     const { title } = hublParameters;
     
     // Return the TeamModule component
     return (
         <Layout addClass="content-wrapper">
-        <h1>{title || 'Our Team'}</h1>
+        <h1> {props.hublData} {title || 'Our Team'}</h1>
 <Island module={Team}  wrapperTag="div" wrapperClassName={styles.team} theMembers={teamMembers} styles={styles} hydrateOn="idle"/>
         </Layout>
     );
@@ -40,3 +41,5 @@ export { fields } from './fields.jsx';
 export const meta = {
     label: `Team Module`,
 }
+
+export const hublDataTemplate = `{% set hublData = "Hello from HubL!" %}`;
