@@ -26,7 +26,7 @@ export const Component = ({ fieldValues, hublParameters = {} }) => {
     
     // Return the TeamModule component
     return (
-        <Layout>
+        <Layout addClass="content-wrapper">
         <h1>{title || 'Our Team'}</h1>
 <Island module={Team}  wrapperTag="div" wrapperClassName={styles.team} theMembers={teamMembers} styles={styles} hydrateOn="idle"/>
         </Layout>
