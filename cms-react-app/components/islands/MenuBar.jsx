@@ -36,7 +36,7 @@ export default function MenuCreator({navLinks} ) {
               </a>
               {openIndex === index && (
                 <ul className={headerStyles.submenu}>
-                  {navLink.sub_menu_items.map((subItem) => (
+                  {navLink.children.map((subItem) => (
                     <li key={subItem.index}>
                       <a
                         href={subItem.link_field?.url?.href}
