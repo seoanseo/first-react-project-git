@@ -12,7 +12,7 @@ import PrettyPrint from '../../PrettyPrint.jsx';
 export function Component(props) {
     
     return <Layout addClass="added_class">
-                 
+                 {props.menu}
                   </Layout>;
 }
 
