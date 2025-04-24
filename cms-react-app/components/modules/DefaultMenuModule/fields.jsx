@@ -1,6 +1,6 @@
 import {
 ModuleFields,
-MenuField
+MenuField 
 } from "@hubspot/cms-components/fields";
 
 export const fields = (
