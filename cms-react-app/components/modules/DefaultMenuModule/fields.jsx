@@ -8,9 +8,9 @@ export const fields = (
     <MenuField
       name="chosen_menu"
       label="Choosen Menu"
-      description="Select the menu items to display in the menu."
-      required={true}
-      defaultValue={[]}
+      required={false}
+      locked={false}
+      default={173898566774}
     />
   </ModuleFields>
 );
