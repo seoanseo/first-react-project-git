@@ -25,7 +25,7 @@ export function Component(props) {
       return newItem;
     });
     return <Layout addClass="added_class">
-                               <Island module={MenuBar}  navLinks={menuArray}  hydrateOn="idle"/>
+                               <Island module={MenuBar}  navLinks={updatedMenuArray}  hydrateOn="idle"/>
             </Layout>;
 }
 
