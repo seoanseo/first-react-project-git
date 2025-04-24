@@ -25,4 +25,9 @@ export const meta = {
    
 }
 
-export const hublDataTemplate = `{% set menu = menu(module.chosen_menu, "site_root").children %}`;
+export const hublDataTemplate = `
+{% set hublData = {
+      "the_chosen_one": menu(module.chosen_menu, "site_root").children,
+      "blogAllPostsUrl": blog_all_posts_url(blogId)
+    }
+  %}`;
