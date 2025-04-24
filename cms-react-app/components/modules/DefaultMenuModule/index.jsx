@@ -13,18 +13,22 @@ export function Component(props) {
     const menuArray = props.hublData.the_chosen_one;
 
     const updatedMenuArray = menuArray.map(item => {
-      const newItem = { ...item, text: item.label };
-      delete newItem.label;
-      if (newItem.children && newItem.children.length > 0) {
-        newItem.children = newItem.children.map(child => {
-          const newChild = { ...child, text: child.label };
-          delete newChild.label;
-          return newChild;
+      const { label, children, ...rest } = item;
+      const newItem = { text: label, sub_menu_items: children, ...rest };
+    
+      if (newItem.sub_menu_items && newItem.sub_menu_items.length > 0) {
+        newItem.show_submenu = true;
+        newItem.sub_menu_items = newItem.sub_menu_items.map(child => {
+          const { label: childLabel, ...childRest } = child;
+          return { text: childLabel, ...childRest };
         });
       }
+    
+      delete newItem.sub_menu_items; // Remove the original 'children' if it exists
       return newItem;
     });
     return <Layout addClass="added_class">
+      {PrettyPrint(updatedMenuArray)}
                                <Island module={MenuBar}  navLinks={updatedMenuArray}  hydrateOn="idle"/>
             </Layout>;
 }

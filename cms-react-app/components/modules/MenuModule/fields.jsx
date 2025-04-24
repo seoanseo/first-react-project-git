@@ -57,7 +57,7 @@ export const fields = (
               display="toggle"
           />
           <RepeatedFieldGroup
-                  name="sub_menu_items"
+                  name="children"
                   label="Sub Menu Items"
                   visibility={{
                     controlling_field_path: 'menu_items.show_submenu',
