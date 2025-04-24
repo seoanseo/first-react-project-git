@@ -32,7 +32,7 @@ export default function MenuCreator({navLinks} ) {
                   cursor: 'pointer',
                 }}
               >
-                {navLink.label}
+                {navLink.text}
               </a>
               {openIndex === index && (
                 <ul className={headerStyles.submenu}>
@@ -41,7 +41,7 @@ export default function MenuCreator({navLinks} ) {
                       <a
                         href={subItem.link_field?.url?.href}
                                     >
-                        {subItem.label}
+                        {subItem.text}
                       </a>
                     </li>
                   ))}
@@ -53,7 +53,7 @@ export default function MenuCreator({navLinks} ) {
               <a className={customStyles.menu__link}
                             href={navLink.link_field?.url?.href}
             >
-              {navLink.label}
+              {navLink.text}
             </a>
             </li>
           )}

@@ -19,7 +19,7 @@ export const fields = (
           }}
       >
           <TextField
-              name="label"
+              name="text"
               label="Link Text"
               description="The text to display in the header."
           />
