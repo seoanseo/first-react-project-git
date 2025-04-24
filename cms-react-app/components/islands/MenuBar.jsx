@@ -4,7 +4,7 @@ import customStyles from '../../styles/custom_menu.module.css';
 
 import { useState } from 'react';
 
-export default function CounterButton({ navLinks, brandColor }) {
+export default function MenuCreator({ navLinks, brandColor }) {
   const [openIndex, setOpenIndex] = useState(null); // Track which submenu is open
 
   const handleMouseEnter = (index) => {

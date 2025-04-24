@@ -1,6 +1,11 @@
 // Import layout component
 import Layout from '../../Layout.jsx';
 
+import { Island } from "@hubspot/cms-components";
+
+import Team from "../../islands/Team.jsx?island";
+
+
 // Import stylesheet
 import styles from "../../../styles/team.module.css";
 
@@ -12,6 +17,7 @@ import styles from "../../../styles/team.module.css";
  *
  */
 
+
 // Export the TeamModule Component
 export const Component = ({ fieldValues, hublParameters = {} }) => {
     // Constants for the fieldValues and hublParameters
@@ -22,15 +28,7 @@ export const Component = ({ fieldValues, hublParameters = {} }) => {
     return (
         <Layout>
         <h1>{title || 'Our Team'}</h1>
-        <div className={styles.team}>
-            {/* Use the map function to iterate over the teamMembers array */}
-            {teamMembers.map((teamMember, index) => (
-            <div key={index} className={styles.member}>
-                <img src={teamMember.team_member_photo.src} alt={teamMember.team_member_name} height={teamMember.team_member_photo.height} width={teamMember.team_member_photo.width} />
-                <h3>{teamMember.team_member_name}</h3>
-            </div>
-            ))}
-        </div>
+<Island module={Team}  wrapperTag="div" wrapperClassName={styles.team} theMembers={teamMembers} styles={styles} hydrateOn="visible"/>
         </Layout>
     );
 }
