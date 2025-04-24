@@ -4,7 +4,7 @@ import PrettyPrint from '../PrettyPrint.jsx';
 
 import { useState } from 'react';
 
-export default function MenuCreator({navLinks, brandColor} ) {
+export default function MenuCreator({navLinks} ) {
   const [openIndex, setOpenIndex] = useState(null); // Track which submenu is open
 
   const handleMouseEnter = (index) => {
@@ -29,9 +29,6 @@ export default function MenuCreator({navLinks, brandColor} ) {
             >
               <a className={customStyles.menu__link}
                 style={{
-                  color: brandColor.color,
-                  borderColor: brandColor.color,
-                  opacity: brandColor.opacity / 100,
                   cursor: 'pointer',
                 }}
               >
@@ -43,12 +40,7 @@ export default function MenuCreator({navLinks, brandColor} ) {
                     <li key={subItem.index}>
                       <a
                         href={subItem.link_field?.url?.href}
-                        style={{
-                          color: brandColor.color,
-                          borderColor: brandColor.color,
-                          opacity: brandColor.opacity / 100,
-                        }}
-                      >
+                                    >
                         {subItem.text}
                       </a>
                     </li>
@@ -59,12 +51,7 @@ export default function MenuCreator({navLinks, brandColor} ) {
           ) : (
             <li className={headerStyles.no_dropdown}>
               <a className={customStyles.menu__link}
-              style={{
-                color: brandColor.color,
-                borderColor: brandColor.color,
-                opacity: brandColor.opacity / 100,
-              }}
-              href={navLink.link_field?.url?.href}
+                            href={navLink.link_field?.url?.href}
             >
               {navLink.text}
             </a>

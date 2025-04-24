@@ -10,10 +10,24 @@ import PrettyPrint from '../../PrettyPrint.jsx';
 
 
 export function Component(props) {
-    
+    const menuArray = props.hublData.the_chosen_one;
+
+    const updatedMenuArray = menuArray.map(item => {
+      const newItem = { ...item, text: item.label };
+      delete newItem.label;
+      if (newItem.children && newItem.children.length > 0) {
+        newItem.children = newItem.children.map(child => {
+          const newChild = { ...child, text: child.label };
+          delete newChild.label;
+          return newChild;
+        });
+      }
+      return newItem;
+    });
     return <Layout addClass="added_class">
-                 {props.menu}
-                  </Layout>;
+              {PrettyPrint(updatedMenuArray)}
+                  <Island module={MenuBar}  navLinks={updatedMenuArray}  hydrateOn="idle"/>
+            </Layout>;
 }
 
 export default Component;
@@ -21,13 +35,13 @@ export { fields } from './fields.jsx';
 
 export const meta = {
     label: `The Default Menu Module`,
-    global : true,
+    global : false,
    
 }
 
 export const hublDataTemplate = `
 {% set hublData = {
-      "the_chosen_one": menu(module.chosen_menu, "site_root").children,
-      "blogAllPostsUrl": blog_all_posts_url(blogId)
+      "the_chosen_one": menu(173898566774, "site_root").children,
+      "echo": "echoed"
     }
   %}`;
