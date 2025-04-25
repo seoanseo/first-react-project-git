@@ -20,6 +20,7 @@ export function Component({ fieldValues = {}, hublParameters = {} }) {
   const { menu_items: menuItems } = fieldValues;
 
     return <Layout addClass="added_class">
+      
                    <Island module={MenuBar}  navLinks={menuItems} brandColor={brandColor} hydrateOn="idle"/>
                 </Layout>;
 }

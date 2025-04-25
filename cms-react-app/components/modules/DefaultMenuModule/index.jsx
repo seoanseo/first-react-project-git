@@ -13,20 +13,33 @@ export function Component(props) {
     const menuArray = props.hublData.the_chosen_one;
 
     const updatedMenuArray = menuArray.map(item => {
-      const { label, children, ...rest } = item;
-      const newItem = { text: label, sub_menu_items: children, ...rest };
+      const { label,children,url, ...rest } = item;
+      const newItem = { text: label, ...rest };
+      if (url) {
+         newItem.link_field = { url: { href: url } };
+      }
     
-      if (newItem.sub_menu_items && newItem.sub_menu_items.length > 0) {
+    
+      if (children && children.length > 0) {
         newItem.show_submenu = true;
-        newItem.sub_menu_items = newItem.sub_menu_items.map(child => {
-          const { label: childLabel, ...childRest } = child;
-          return { text: childLabel, ...childRest };
+        newItem.children = children.map(child => {
+          const { label: childLabel, url: childUrl, ...childRest } = child;
+          const newChild = { text: childLabel, ...childRest };
+          if (childUrl) {
+            newChild.link_field = { url: { href: childUrl } };
+          }
+          return newChild;
         });
       }
     
-      delete newItem.sub_menu_items; // Remove the original 'children' if it exists
+      delete newItem.url; // Remove the original 'url' from the top-level item
+      if (newItem.children) {
+        newItem.children.forEach(child => delete child.url); // Remove 'url' from child items
+      }
+    
       return newItem;
     });
+
     return <Layout addClass="added_class">
       {PrettyPrint(updatedMenuArray)}
                                <Island module={MenuBar}  navLinks={updatedMenuArray}  hydrateOn="idle"/>
@@ -44,7 +57,7 @@ export const meta = {
 
 export const hublDataTemplate = `
 {% set hublData = {
-      "the_chosen_one": menu(173898566774, "site_root").children,
+      "the_chosen_one": menu(module.chosen_menu, "site_root").children,
       "echo": "echoed"
     }
   %}`;

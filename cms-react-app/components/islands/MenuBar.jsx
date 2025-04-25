@@ -21,7 +21,7 @@ export default function MenuCreator({navLinks} ) {
       {navLinks.map((navLink, index) => (
   
         <div key={index} className={headerStyles.navItem}>
-          {navLink.show_submenu ? (
+          {navLink.show_submenu && navLink.children ? (
             <li
               className={headerStyles.dropdown}
               onMouseEnter={() => handleMouseEnter(index)}
