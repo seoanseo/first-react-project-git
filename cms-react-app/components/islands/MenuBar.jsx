@@ -29,6 +29,7 @@ export default function MenuCreator({navLinks} ) {
             >
               <a className={customStyles.menu__link}
                 style={{
+                  color: 'red',
                   cursor: 'pointer',
                 }}
               >
@@ -51,6 +52,10 @@ export default function MenuCreator({navLinks} ) {
           ) : (
             <li className={headerStyles.no_dropdown}>
               <a className={customStyles.menu__link}
+              style={{
+                color: 'green',
+                cursor: 'pointer',
+              }}
                             href={navLink.link_field?.url?.href}
             >
               {navLink.text}

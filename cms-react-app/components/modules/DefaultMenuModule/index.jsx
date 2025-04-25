@@ -41,8 +41,7 @@ export function Component(props) {
     });
 
     return <Layout addClass="added_class">
-      {PrettyPrint(updatedMenuArray)}
-                               <Island module={MenuBar}  navLinks={updatedMenuArray}  hydrateOn="idle"/>
+                             <Island module={MenuBar}  navLinks={updatedMenuArray}  hydrateOn="idle"/>
             </Layout>;
 }
 
