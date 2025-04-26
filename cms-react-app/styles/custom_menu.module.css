@@ -1,6 +1,11 @@
 /* custom_menu.module.css */
 
 /* Header */
+
+.menu__link {
+  color:orange;
+  
+}
 .custom_nav {
   width: 100%;
   display: flex;
