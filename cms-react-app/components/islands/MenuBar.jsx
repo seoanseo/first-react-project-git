@@ -19,7 +19,7 @@ function MenuItem({ item, level = 1 }) { // Add a level prop with a default valu
     if (hasChildren) {
       timeoutRef.current = setTimeout(() => {
         setIsSubmenuOpen(false);
-      }, 1000); // Adjust the delay (in milliseconds) as needed
+      }, 750); // Adjust the delay (in milliseconds) as needed
     }
   };
 
