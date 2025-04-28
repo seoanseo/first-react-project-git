@@ -102,12 +102,11 @@ import {
           label="Main Item Type ?"
           /* required={false} */
           /* locked={false} */
-           display="select" 
-          choices={[
-          { value: 'link', label: 'Regular link' },
-          { value: 'dropdown', label: 'Dropdown' }, 
-           ]}
-           default="link" 
+           display="select"
+      choices={[
+        ['img--left', 'Image Left - Text Right'],
+        ['img--right', 'Text Left - Image Right'],
+      ]}
         />
         <LinkField
           name="main_item_link"
