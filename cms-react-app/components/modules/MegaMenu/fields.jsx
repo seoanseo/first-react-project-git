@@ -94,6 +94,15 @@ import {
         <LinkField
           name="main_item_link"
           label="Main Item Link"
+  default={{
+    url: {
+        content_id: null,
+        type: 'EXTERNAL',
+        href: '',
+    },
+    open_in_new_tab: false,
+    no_follow: false,
+}}
           /* required={false} */
           /* locked={false} */
           /* visibility={{ */
@@ -174,6 +183,15 @@ import {
             <LinkField
               name="left_cta_link"
               label="CTA Link"
+  default={{
+    url: {
+        content_id: null,
+        type: 'EXTERNAL',
+        href: '',
+    },
+    open_in_new_tab: false,
+    no_follow: false,
+}}
               /* required={false} */
               /* locked={false} */
               /* supportedTypes={["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"]} */
@@ -233,6 +251,15 @@ import {
             /* resizable={true} */
             />
             <LinkField name="sub_link" label="Sub Link"
+  default={{
+    url: {
+        content_id: null,
+        type: 'EXTERNAL',
+        href: '',
+    },
+    open_in_new_tab: false,
+    no_follow: false,
+}}
             /* required={false} */
             /* locked={false} */
             /* supportedTypes={["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"]} */
@@ -277,7 +304,16 @@ import {
               /* required={false} */
               /* locked={false} */
               />
-              <LinkField name="list_item_link" label="List Item Link"
+              <LinkField name="list_item_link" label="List Item Link" 
+  default={{
+    url: {
+        content_id: null,
+        type: 'EXTERNAL',
+        href: '',
+    },
+    open_in_new_tab: false,
+    no_follow: false,
+}}
               /* required={false} */
               /* locked={false} */
               /* supportedTypes={["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"]} */
