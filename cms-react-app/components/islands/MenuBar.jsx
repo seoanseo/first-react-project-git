@@ -40,7 +40,7 @@ function MenuItem({ item, level = 1 }) { // Add a level prop with a default valu
         {item.text}
       </a>
       {hasChildren && isSubmenuOpen && (
-        <ul className={`${headerStyles.submenu} submenu-level-${level}`}> {/* Add the level as a class */}
+        <ul className={`${headerStyles.submenu} submenu-level-${level}`} data-level={`${level % 2 === 0 ? 'even' : 'odd'}`}> {/* Add the level as a class */}
           {item.children.map((child, index) => (
             <MenuItem key={index} item={child} level={level + 1} /> 
           ))}

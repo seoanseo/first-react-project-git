@@ -46,12 +46,13 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
 }
 
-:global(.submenu-level-1) {
+
+:global(ul[data-level="odd"]) {
   top: 100%;
   left:0
 }
 
-:global(.submenu-level-2) {
+:global(ul[data-level="even"]) {
   left: 100%;
   top:0
 }
