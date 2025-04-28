@@ -3,7 +3,7 @@ import {
   ModuleFields,
   ImageField,
   LinkField,
-  TextareaField,
+  RichTextField,
   TextField,
   BooleanField,
   FieldGroup,
@@ -141,7 +141,7 @@ export const fields = (
             }}
             inlineHelpText="This content won't appear if at least one slide is generated for the slider"
           />
-          <TextareaField
+          <RichTextField
             name="left_content"
             label="Left Text Content"
             visibility={{
@@ -214,7 +214,7 @@ export const fields = (
         >
           <BooleanField name="hide_right_column" label="Hide the right column ?" />
           <BooleanField name="borderless_right_column" label="Borderless right column ?" />
-          <TextareaField name="right_content" label="Right Content" />
+          <RichTextField name="right_content" label="Right Content" />
           <RepeaterField
             name="right_list_items"
             label="Right Listing"
