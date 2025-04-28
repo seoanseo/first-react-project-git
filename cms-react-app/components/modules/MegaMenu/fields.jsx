@@ -84,12 +84,12 @@ import {
         label="Main Menu Items"
         /* required={false} */
         /* locked={false} */
-        occurrence={{ 
+       /*  occurrence={{ 
          min: null, 
           max: null, 
          sortingLabelField: 'main_item_label', 
          default: null, 
-         }} 
+         }}  */
       >
         <TextField
           name="main_item_label"
@@ -123,14 +123,14 @@ import {
 }}
           /* required={false} */
           /* locked={false} */
-           visibility={{ 
+          /*  visibility={{ 
             controlling_field: 'main_item_type', 
             controlling_field_path: null, 
              controlling_value_regex: 'link', 
              operator: 'EQUAL', 
            }} 
            supportedTypes={["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"]} 
-           showAdvancedRelOptions={false} 
+           showAdvancedRelOptions={false}  */
         />
         /* Handling the 'dropdown' part would likely involve another FieldGroup or RepeatedFieldGroup here, */
         /* and the complex nested structure might be better managed in the HubL template. */
