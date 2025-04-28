@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styles from './MegaMenu.module.css'; // Assuming you'll create this CSS module
 
 const MegaMenu = ({ navLinks, logoSettings, mainButtonSettings, brandColor }) => {
   const headerRef = useRef(null);
@@ -120,7 +119,7 @@ const MegaMenu = ({ navLinks, logoSettings, mainButtonSettings, brandColor }) =>
   };
 
   return (
-    <header id="main-navigation" className={`${styles.mainNavigation} hello-b header ${isMenuOpen ? 'open' : ''}`} ref={headerRef}>
+    <header id="main-navigation" className={`hello-b header ${isMenuOpen ? 'open' : ''}`} ref={headerRef}>
       <div className="container">
         {logoSettings?.logo_link?.url?.href ? (
           <a href={logoSettings.logo_link.url.href} className="logo-wrapper">
