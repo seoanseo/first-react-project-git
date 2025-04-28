@@ -103,10 +103,9 @@ import {
           /* required={false} */
           /* locked={false} */
            display="select"
-      choices={[
-        ['img--left', 'Image Left - Text Right'],
-        ['img--right', 'Text Left - Image Right'],
-      ]}
+      choices={      [ [ "link", "Regular link" ],
+         [ "dropdown", "Dropdown" ] ]
+      }
         />
         <LinkField
           name="main_item_link"
