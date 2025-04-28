@@ -15,7 +15,7 @@ export const fields = (
   <ModuleFields>
     <FieldGroup
       name="logo_settings"
-      label="Logo Settings"
+      label="Logo Settings!!"
       required={false}
       locked={false}
     >
@@ -43,7 +43,7 @@ export const fields = (
       name="main_button_settings"
       label="Main Button"
       required={false}
-      locked={true}
+      locked={false}
     >
       <TextField
         name="main_button_label"
@@ -66,7 +66,7 @@ export const fields = (
       name="main_menu_items"
       label="Main Menu Items"
       required={false}
-      locked={true}
+      locked={false}
       occurrence={{
         min: null,
         max: null,
