@@ -103,11 +103,11 @@ import {
           /* required={false} */
           /* locked={false} */
           /* display="select" */
-          /* choices={[ */
-          /*   { value: 'link', label: 'Regular link' }, */
-          /*   { value: 'dropdown', label: 'Dropdown' }, */
-          /* ]} */
-          /* default="link" */
+          choices={[
+          { value: 'link', label: 'Regular link' },
+          { value: 'dropdown', label: 'Dropdown' }, 
+           ]}
+           default="link" 
         />
         <LinkField
           name="main_item_link"
