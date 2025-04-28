@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   ModuleFields,
+  RepeatedFieldGroup,
   ImageField,
   LinkField,
   RichTextField,
@@ -60,7 +61,7 @@ export const fields = (
       />
     </FieldGroup>
 
-    <RepeaterField
+    <RepeatedFieldGroup
       name="main_menu_items"
       label="Main Menu Items"
       required={false}
@@ -104,7 +105,7 @@ export const fields = (
         supportedTypes={["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"]}
         showAdvancedRelOptions={false}
       />
-      {/* Handling the 'dropdown' part would likely involve another FieldGroup or RepeaterField here, */}
+      {/* Handling the 'dropdown' part would likely involve another FieldGroup or RepeatedFieldGroup here, */}
       {/* and the complex nested structure might be better managed in the HubL template. */}
       <FieldGroup
         name="dropdown_settings"
@@ -153,8 +154,8 @@ export const fields = (
             inlineHelpText="This content won't appear if at least one slide is generated for the slider"
           />
           {/* The 'slide_batch' with its nested choices and visibility rules is quite complex */}
-          {/* and might be best handled with a RepeaterField and conditional logic in HubL. */}
-          <RepeaterField
+          {/* and might be best handled with a RepeatedFieldGroup and conditional logic in HubL. */}
+          <RepeatedFieldGroup
             name="slide_batch"
             label="Slides Batch"
             inlineHelpText="Create here a batch of slides from blog resources or create them from scratch"
@@ -169,7 +170,7 @@ export const fields = (
               default="blog"
             />
             {/* ... more fields based on 'batch_type' and 'slide_type' would go here ... */}
-          </RepeaterField>
+          </RepeatedFieldGroup>
           <LinkField
             name="left_cta_link"
             label="CTA Link"
@@ -193,7 +194,7 @@ export const fields = (
             ]}
             default="regular"
           />
-          <RepeaterField
+          <RepeatedFieldGroup
             name="sub_links"
             label="Sub Links"
           >
@@ -205,7 +206,7 @@ export const fields = (
             />
             <ImageField name="sub_picto" label="Sub Picto" />
             <LinkField name="sub_link" label="Sub Link" />
-          </RepeaterField>
+          </RepeatedFieldGroup>
         </FieldGroup>
 
         <FieldGroup
@@ -215,15 +216,15 @@ export const fields = (
           <BooleanField name="hide_right_column" label="Hide the right column ?" />
           <BooleanField name="borderless_right_column" label="Borderless right column ?" />
           <RichTextField name="right_content" label="Right Content" />
-          <RepeaterField
+          <RepeatedFieldGroup
             name="right_list_items"
             label="Right Listing"
           >
             <TextField name="list_item_text" label="List Item" />
             <LinkField name="list_item_link" label="List Item Link" />
-          </RepeaterField>
+          </RepeatedFieldGroup>
         </FieldGroup>
       </FieldGroup>
-    </RepeaterField>
+    </RepeatedFieldGroup>
   </ModuleFields>
 );
