@@ -106,6 +106,7 @@ import {
       choices={      [ [ "link", "Regular link" ],
          [ "dropdown", "Dropdown" ] ]
       }
+      default="link"
         />
         <LinkField
           name="main_item_link"
@@ -188,10 +189,10 @@ import {
               <ChoiceField
                 name="batch_type"
                 label="Batch Type"
-                /* choices={[ */
-                /*   { value: 'blog', label: 'Blog generated batch' }, */
-                /*   { value: 'homemade', label: 'Homemade generated slide' }, */
-                /* ]} */
+                choices={[ 
+                 ['blog', 'Blog generated batch' ], 
+                ['homemade','Homemade generated slide']
+                ]}
                 /* default="blog" */
               />
               /* ... more fields based on 'batch_type' and 'slide_type' would go here ... */
@@ -232,10 +233,10 @@ import {
               label="Main Column Type"
               /* required={false} */
               /* locked={false} */
-              /* choices={[ */
-              /*   { value: 'descriptive', label: 'Descriptive items' }, */
-              /*   { value: 'regular', label: 'Regular items' }, */
-              /* ]} */
+               choices={[ 
+              ['descriptive', 'Descriptive items' ], 
+               ['regular','Regular items' ], 
+              ]} 
               /* default="regular" */
             />
             <RepeatedFieldGroup
