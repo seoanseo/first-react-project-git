@@ -23,7 +23,7 @@ import {
           label="Logo Image"
           /* required={false} */
           /* locked={false} */
-          /* inlineHelpText="Assign the white logo in Png" */
+          inlineHelpText="Assign the white logo in Png" 
           /* responsive={true} */
           /* resizable={true} */
         />
@@ -58,7 +58,7 @@ import {
           label="Main Button Label"
           /* required={false} */
           /* locked={false} */
-          /* default="Book a demo" */
+          default="Book a demo"
         />
         <LinkField
           name="main_button_link"
@@ -84,12 +84,12 @@ import {
         label="Main Menu Items"
         /* required={false} */
         /* locked={false} */
-        /* occurrence={{ */
-        /*   min: null, */
-        /*   max: null, */
-        /*   sortingLabelField: 'main_item_label', */
-        /*   default: null, */
-        /* }} */
+        occurrence={{ 
+         min: null, 
+          max: null, 
+         sortingLabelField: 'main_item_label', 
+         default: null, 
+         }} 
       >
         <TextField
           name="main_item_label"
@@ -102,7 +102,7 @@ import {
           label="Main Item Type ?"
           /* required={false} */
           /* locked={false} */
-          /* display="select" */
+           display="select" 
           choices={[
           { value: 'link', label: 'Regular link' },
           { value: 'dropdown', label: 'Dropdown' }, 
@@ -123,14 +123,14 @@ import {
 }}
           /* required={false} */
           /* locked={false} */
-          /* visibility={{ */
-          /*   controlling_field: 'main_item_type', */
-          /*   controlling_field_path: null, */
-          /*   controlling_value_regex: 'link', */
-          /*   operator: 'EQUAL', */
-          /* }} */
-          /* supportedTypes={["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"]} */
-          /* showAdvancedRelOptions={false} */
+           visibility={{ 
+            controlling_field: 'main_item_type', 
+            controlling_field_path: null, 
+             controlling_value_regex: 'link', 
+             operator: 'EQUAL', 
+           }} 
+           supportedTypes={["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"]} 
+           showAdvancedRelOptions={false} 
         />
         /* Handling the 'dropdown' part would likely involve another FieldGroup or RepeatedFieldGroup here, */
         /* and the complex nested structure might be better managed in the HubL template. */
