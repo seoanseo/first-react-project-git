@@ -17,7 +17,7 @@ export const fields = (
       name="logo_settings"
       label="Logo Settings"
       required={false}
-      locked={true}
+      locked={false}
     >
       <ImageField
         name="logo_image"
