@@ -14,10 +14,7 @@ import {
             <TextField name="text_level_3" label="Text Level 3" />
             <FieldGroup name="level_4" label="Level 4">
               <TextField name="text_level_4" label="Text Level 4" />
-              <FieldGroup name="level_5" label="Level 5">
-                <TextField name="text_level_5" label="Text Level 5" />
               </FieldGroup>
-            </FieldGroup>
           </FieldGroup>
         </FieldGroup>
       </FieldGroup>
