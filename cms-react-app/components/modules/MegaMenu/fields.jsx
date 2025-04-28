@@ -6,12 +6,12 @@ import {
   TextareaField,
   TextField,
   BooleanField,
-  GroupField,
+  FieldGroup,
 } from "@hubspot/cms-components/fields";
 
 export const fields = (
   <ModuleFields>
-    <GroupField
+    <FieldGroup
       name="logo_settings"
       label="Logo Settings"
       required={false}
@@ -35,9 +35,9 @@ export const fields = (
         supportedTypes={["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"]}
         showAdvancedRelOptions={false}
       />
-    </GroupField>
+    </FieldGroup>
 
-    <GroupField
+    <FieldGroup
       name="main_button_settings"
       label="Main Button"
       required={false}
@@ -58,7 +58,7 @@ export const fields = (
         supportedTypes={["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"]}
         showAdvancedRelOptions={false}
       />
-    </GroupField>
+    </FieldGroup>
 
     <RepeaterField
       name="main_menu_items"
@@ -104,9 +104,9 @@ export const fields = (
         supportedTypes={["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"]}
         showAdvancedRelOptions={false}
       />
-      {/* Handling the 'dropdown' part would likely involve another GroupField or RepeaterField here, */}
+      {/* Handling the 'dropdown' part would likely involve another FieldGroup or RepeaterField here, */}
       {/* and the complex nested structure might be better managed in the HubL template. */}
-      <GroupField
+      <FieldGroup
         name="dropdown_settings"
         label="Dropdown Settings"
         required={false}
@@ -118,7 +118,7 @@ export const fields = (
           operator: 'EQUAL',
         }}
       >
-        <GroupField
+        <FieldGroup
           name="left_column"
           label="Left Column Settings"
           required={false}
@@ -178,9 +178,9 @@ export const fields = (
             name="left_cta_label"
             label="CTA Label"
           />
-        </GroupField>
+        </FieldGroup>
 
-        <GroupField
+        <FieldGroup
           name="main_column"
           label="Main Column Settings"
         >
@@ -206,9 +206,9 @@ export const fields = (
             <ImageField name="sub_picto" label="Sub Picto" />
             <LinkField name="sub_link" label="Sub Link" />
           </RepeaterField>
-        </GroupField>
+        </FieldGroup>
 
-        <GroupField
+        <FieldGroup
           name="right_column"
           label="Right Column Settings"
         >
@@ -222,8 +222,8 @@ export const fields = (
             <TextField name="list_item_text" label="List Item" />
             <LinkField name="list_item_link" label="List Item Link" />
           </RepeaterField>
-        </GroupField>
-      </GroupField>
+        </FieldGroup>
+      </FieldGroup>
     </RepeaterField>
   </ModuleFields>
 );
