@@ -30,6 +30,15 @@ import {
         <LinkField
           name="logo_link"
           label="Logo Link"
+  default={{
+    url: {
+        content_id: null,
+        type: 'EXTERNAL',
+        href: '',
+    },
+    open_in_new_tab: false,
+    no_follow: false,
+}}
           /* required={false} */
           /* locked={false} */
           /* inlineHelpText="if no url is indicated, the logo will no longer be displayed as a link in the browser" */
@@ -54,6 +63,15 @@ import {
         <LinkField
           name="main_button_link"
           label="Main Button Link"
+  default={{
+    url: {
+        content_id: null,
+        type: 'EXTERNAL',
+        href: '',
+    },
+    open_in_new_tab: false,
+    no_follow: false,
+}}
           /* required={false} */
           /* locked={false} */
           /* supportedTypes={["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"]} */
