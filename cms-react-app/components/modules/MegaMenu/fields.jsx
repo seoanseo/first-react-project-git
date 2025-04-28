@@ -5,7 +5,7 @@ import {
   LinkField,
   TextareaField,
   TextField,
-  BooleanCheckboxField,
+  BooleanField,
   GroupField,
 } from "@hubspot/cms-components/fields";
 
@@ -124,7 +124,7 @@ export const fields = (
           required={false}
           locked={false}
         >
-          <BooleanCheckboxField
+          <BooleanField
             name="show_slider"
             label="Toggle on/off the left slider ?"
             inlineHelpText="( checked = on )"
@@ -212,8 +212,8 @@ export const fields = (
           name="right_column"
           label="Right Column Settings"
         >
-          <BooleanCheckboxField name="hide_right_column" label="Hide the right column ?" />
-          <BooleanCheckboxField name="borderless_right_column" label="Borderless right column ?" />
+          <BooleanField name="hide_right_column" label="Hide the right column ?" />
+          <BooleanField name="borderless_right_column" label="Borderless right column ?" />
           <TextareaField name="right_content" label="Right Content" />
           <RepeaterField
             name="right_list_items"
