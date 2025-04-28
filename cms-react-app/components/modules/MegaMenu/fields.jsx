@@ -3,6 +3,7 @@ import {
   ModuleFields,
   RepeatedFieldGroup,
   ImageField,
+  ChoiceField,
   LinkField,
   RichTextField,
   TextField,
