@@ -1,6 +1,6 @@
 import {
-  RepeatedFieldGroup,
   ModuleFields,
+  RepeatedFieldGroup,
   BooleanField,
   TextField,
   LinkField,

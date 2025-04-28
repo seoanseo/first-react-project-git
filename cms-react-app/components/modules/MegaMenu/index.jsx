@@ -8,12 +8,7 @@ import Layout from '../../Layout.jsx';
 import PrettyPrint from '../../PrettyPrint.jsx';
 
 export function Component({ fieldValues = {}, hublParameters = {} }) {
-  const brandColor = {
-    color: "#007bff",
-    opacity: 100,
-  };
-
-  const { main_menu_items: menuItems, logo_settings: logoSettings, main_button_settings: mainButtonSettings } = fieldValues;
+   const { main_menu_items: menuItems, logo_settings: logoSettings, main_button_settings: mainButtonSettings } = fieldValues;
 
   return (
     <Layout addClass="added_class">
@@ -23,7 +18,6 @@ export function Component({ fieldValues = {}, hublParameters = {} }) {
           navLinks={menuItems}
           logoSettings={logoSettings}
           mainButtonSettings={mainButtonSettings}
-          brandColor={brandColor}
           hydrateOn="idle"
         />
       </div>
