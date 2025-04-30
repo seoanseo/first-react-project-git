@@ -1,9 +1,5 @@
-// Import stylesheet
-import headerStyles from '../../../styles/header.module.css';
-
 import { Island } from "@hubspot/cms-components";
 import MegaMenu from "../../islands/MegaMenu.jsx?island";
-import BlankIsland from "../../islands/BlankIsland.jsx?island";
 import Layout from '../../Layout.jsx';
 import PrettyPrint from '../../PrettyPrint.jsx';
 
@@ -12,15 +8,14 @@ export function Component({ fieldValues = {}, hublParameters = {} }) {
 
   return (
     <Layout addClass="added_class">
-      <div className={headerStyles.megaMenuContainer}>
-        <Island
+ <Island
           module={MegaMenu}
           navLinks={menuItems}
           logoSettings={logoSettings}
           mainButtonSettings={mainButtonSettings}
           hydrateOn="idle"
         />
-      </div>
+   
     </Layout>
   );
 }
