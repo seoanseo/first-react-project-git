@@ -1,7 +1,5 @@
 import megaStyles from '../../styles/megastyles.module.css';
-
 import PrettyPrint from '../PrettyPrint.jsx';
-
 import React, { useEffect, useRef, useState } from 'react';
 
 const MegaMenu = ({ navLinks, logoSettings, mainButtonSettings, brandColor }) => {
@@ -11,6 +9,8 @@ const MegaMenu = ({ navLinks, logoSettings, mainButtonSettings, brandColor }) =>
   const searchTabRef = useRef(null);
   const searchInputRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dropdownRefs = useRef([]);
+  const [hoveredIndex, setHoveredIndex] = useState(-1); // -1 indicates no item is hovered
 
   useEffect(() => {
     const header = headerRef.current;
@@ -52,7 +52,7 @@ const MegaMenu = ({ navLinks, logoSettings, mainButtonSettings, brandColor }) =>
         header.style.zIndex = '';
       }
 
-      // Toggle "active" class Logic
+      // Toggle "active" class Logic on Header
       if (scrollY > 300) {
         header.classList.add(megaStyles.active);
       } else {
@@ -96,30 +96,26 @@ const MegaMenu = ({ navLinks, logoSettings, mainButtonSettings, brandColor }) =>
     }
   };
 
-  const closeAllDropdowns = (currentIndex) => {
+  const handleMouseEnter = (index) => {
+    setHoveredIndex(index);
     const dropdowns = document.querySelectorAll(`.${megaStyles.dropdown}`);
-    const mainDropdownTogglers = document.querySelectorAll(`.${megaStyles['main-dropdown']}`);
-    dropdowns.forEach((dropdown, index) => {
-      if (index !== currentIndex && dropdown.style.maxHeight !== '0px') {
-        dropdown.style.maxHeight = '0px';
-        if (mainDropdownTogglers[index]) {
-          mainDropdownTogglers[index].classList.remove(megaStyles.open);
-        }
-      }
-    });
+    const currentDropdown = dropdowns[index];
+    if (currentDropdown) {
+      currentDropdown.style.maxHeight = 'inherit';
+    }
+    const mainDropdownItems = document.querySelectorAll(`.${megaStyles['main-dropdown']}`);
+    mainDropdownItems[index]?.classList.add(megaStyles.open);
   };
 
-  const toggleDropdown = (index) => {
+  const handleMouseLeave = (index) => {
+    setHoveredIndex(-1);
     const dropdowns = document.querySelectorAll(`.${megaStyles.dropdown}`);
-    const mainDropdownItems = document.querySelectorAll(`.${megaStyles['main-dropdown']}`);
     const currentDropdown = dropdowns[index];
-
-    closeAllDropdowns(index);
-
     if (currentDropdown) {
-      currentDropdown.style.maxHeight = currentDropdown.style.maxHeight === '0px' || !currentDropdown.style.maxHeight ? 'inherit' : '0px';
-      mainDropdownItems[index]?.classList.toggle(megaStyles.open);
+      currentDropdown.style.maxHeight = '0px';
     }
+    const mainDropdownItems = document.querySelectorAll(`.${megaStyles['main-dropdown']}`);
+    mainDropdownItems[index]?.classList.remove(megaStyles.open);
   };
 
   return (
@@ -146,94 +142,100 @@ const MegaMenu = ({ navLinks, logoSettings, mainButtonSettings, brandColor }) =>
         )}
         <ul className={megaStyles['navigation-mainlist']} id="navigation-mainlist" ref={menuContainerRef}>
           {navLinks && navLinks.map((item, index) => (
-            <li key={item.id} className={`${megaStyles['main-item']} ${item.main_item_type === 'link' ? megaStyles['main-link'] : megaStyles['main-dropdown']}`}>
+            <li
+              key={item.id}
+              className={`${megaStyles['main-item']} ${item.main_item_type === 'link' ? megaStyles['main-link'] : megaStyles['main-dropdown']}`}
+              onMouseEnter={() => item.main_item_type !== 'link' && handleMouseEnter(index)}
+              onMouseLeave={() => item.main_item_type !== 'link' && handleMouseLeave(index)}
+            >
               {item.main_item_type === 'link' ? (
                 <a className={megaStyles['main-link-content']} href={item.main_item_link?.url?.href}>
                   {item.main_item_label}
                 </a>
               ) : (
                 <>
-                  <p className={megaStyles['main-dropdown-label']} onClick={() => toggleDropdown(index)}>
+                  <p className={megaStyles['main-dropdown-label']}>
                     {item.main_item_label}
                   </p>
-                  <div className={megaStyles.dropdown}>
-                    <div className={megaStyles.container}>
-                      {/* Left Dropdown Part */}
-                      <div className={megaStyles.left}>
-  {item.dropdown_settings?.left_column?.left_title && (
-   <p className={megaStyles['left-title']}>
-    {item.dropdown_settings.left_column.left_title}
-   </p>
-  )}
-  {item.dropdown_settings?.left_column?.left_content && (
-   <p className={megaStyles['left-description']}>
-    {item.dropdown_settings.left_column.left_content}
-   </p>
-  )}
-  {item.dropdown_settings?.left_column?.left_cta_link?.url?.href && (
-   <a
-    href={item.dropdown_settings.left_column.left_cta_link.url.href}
-    className={`${megaStyles.btn} ${megaStyles.tertiary} ${megaStyles.light}`}
-   >
-    <span>{item.dropdown_settings.left_column.left_cta_label}</span>
-   </a>
-  )}
- </div>
-
-                      {/* Main Dropdown Part - Start */}
-                      <div className={`${megaStyles.middle} ${item.dropdown_settings?.main_column?.main_column_type === 'regular' ? megaStyles.regular : ''}`}>
-                       {item.dropdown_settings?.main_column?.sub_links && item.dropdown_settings.main_column.sub_links.map((subItem) => (
-                          <a
-                            key={subItem.id}
-                            aria-label={subItem.sub_title}
-                            href={subItem.sub_link?.url?.href}
-                            target={subItem.sub_link?.open_in_new_tab ? '_blank' : undefined}
-                            className={`${megaStyles['sub-item']} ${item.dropdown_settings?.main_column?.main_column_type === 'regular' ? megaStyles.regular : ''}`}
-                          >
-                            <figure>
-                              <img
-                                src={subItem.sub_picto?.src}
-                                width={subItem.sub_picto?.width}
-                                height={subItem.sub_picto?.height}
-                                alt={`${subItem.sub_picto?.alt} Icon`}
-                              />
-                            </figure>
-                            <div>
-                              <p className={megaStyles['sub-title']}>{subItem.sub_title}</p>
-                              {item.dropdown_settings?.main_column?.main_column_type === 'descriptive' && (
-                                <p className={megaStyles['sub-description']}>{subItem.sub_description}</p>
-                              )}
-                            </div>
-                          </a>
-                        ))}
-                         
-                      </div>
-                      {/* Main Dropdown Part - End */}
-
-                      {/* Right Dropdown Part - Start */}
-                      {!item.dropdown_settings?.right_column?.hidden && (
-                        <div className={`${megaStyles.right} ${item.dropdown_settings?.right_column?.borderless ? megaStyles.borderless : ''}`}>
-                          <div
-                            className={megaStyles['right-content']}
-                            dangerouslySetInnerHTML={{ __html: item.dropdown_settings?.right_column?.right_content }}
-                          />
-                          <ul className={megaStyles['right-list']}>
-                            {item.dropdown_settings?.right_column?.right_list && item.dropdown.right.right_list.map((rightItem) => (
-                              <li key={rightItem.id} className={megaStyles['right-list-item']}>
-                                <a
-                                  href={rightItem.item_link?.url?.href}
-                                  target={rightItem.item_link?.open_in_new_tab ? '_blank' : undefined}
-                                >
-                                  {rightItem.list_item}
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
+                  {hoveredIndex === index && (
+                    <div className={megaStyles.dropdown} ref={(el) => (dropdownRefs.current[index] = el)}>
+                      <div className={megaStyles.container}>
+                        {/* Left Dropdown Part */}
+                        <div className={megaStyles.left}>
+                          {item.dropdown_settings?.left_column?.left_title && (
+                            <p className={megaStyles['left-title']}>
+                              {item.dropdown_settings.left_column.left_title}
+                            </p>
+                          )}
+                          {item.dropdown_settings?.left_column?.left_content && (
+                            <p className={megaStyles['left-description']}>
+                              {item.dropdown_settings.left_column.left_content}
+                            </p>
+                          )}
+                          {item.dropdown_settings?.left_column?.left_cta_link?.url?.href && (
+                            <a
+                              href={item.dropdown_settings.left_column.left_cta_link.url.href}
+                              className={`${megaStyles.btn} ${megaStyles.tertiary} ${megaStyles.light}`}
+                            >
+                              <span>{item.dropdown_settings.left_column.left_cta_label}</span>
+                            </a>
+                          )}
                         </div>
-                      )}
-                      {/* Right Dropdown Part - End */}
-                     </div>
-                  </div>
+
+                        {/* Main Dropdown Part - Start */}
+                        <div className={`${megaStyles.middle} ${item.dropdown_settings?.main_column?.main_column_type === 'regular' ? megaStyles.regular : ''}`}>
+                          {item.dropdown_settings?.main_column?.sub_links && item.dropdown_settings.main_column.sub_links.map((subItem) => (
+                            <a
+                              key={subItem.id}
+                              aria-label={subItem.sub_title}
+                              href={subItem.sub_link?.url?.href}
+                              target={subItem.sub_link?.open_in_new_tab ? '_blank' : undefined}
+                              className={`${megaStyles['sub-item']} ${item.dropdown_settings?.main_column?.main_column_type === 'regular' ? megaStyles.regular : ''}`}
+                            >
+                              <figure>
+                                <img
+                                  src={subItem.sub_picto?.src}
+                                  width={subItem.sub_picto?.width}
+                                  height={subItem.sub_picto?.height}
+                                  alt={`${subItem.sub_picto?.alt} Icon`}
+                                />
+                              </figure>
+                              <div>
+                                <p className={megaStyles['sub-title']}>{subItem.sub_title}</p>
+                                {item.dropdown_settings?.main_column?.main_column_type === 'descriptive' && (
+                                  <p className={megaStyles['sub-description']}>{subItem.sub_description}</p>
+                                )}
+                              </div>
+                            </a>
+                          ))}
+                        </div>
+                        {/* Main Dropdown Part - End */}
+
+                        {/* Right Dropdown Part - Start */}
+                        {!item.dropdown_settings?.right_column?.hidden && (
+                          <div className={`${megaStyles.right} ${item.dropdown_settings?.right_column?.borderless ? megaStyles.borderless : ''}`}>
+                            <div
+                              className={megaStyles['right-content']}
+                              dangerouslySetInnerHTML={{ __html: item.dropdown_settings?.right_column?.right_content }}
+                            />
+                            <ul className={megaStyles['right-list']}>
+                              {item.dropdown_settings?.right_column?.right_list && item.dropdown.right.right_list.map((rightItem) => (
+                                <li key={rightItem.id} className={megaStyles['right-list-item']}>
+                                  <a
+                                    href={rightItem.item_link?.url?.href}
+                                    target={rightItem.item_link?.open_in_new_tab ? '_blank' : undefined}
+                                  >
+                                    {rightItem.list_item}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {/* Right Dropdown Part - End */}
+                      </div>
+                    </div>
+                  )}
                 </>
               )}
             </li>
